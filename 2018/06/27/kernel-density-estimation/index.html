@@ -55,23 +55,23 @@
 <meta name="keywords" content="pattern recognition">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习sklearn:非参数估计之 kernel density estimation (核密度估计)">
-<meta property="og:url" content="http:&#x2F;&#x2F;www.newxuyangcao.top&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;index.html">
+<meta property="og:url" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;index.html">
 <meta property="og:site_name" content="newxuyangcao">
 <meta property="og:description" content="在概率密度估计过程中，如果我们队随机变量的分布是已知的，那么可以直接使用参数估计的方法进行估计，如最大似然估计方法。 然而在实际情况中，随机变量的参数是未知的,因此需要进行非参数估计.核密度估计是非参数估计的一种方法，也就是大家经常听见的parzen 窗方法了. 本文主要介绍 非参数估计的过程以及 parzen窗方法估计概率密度的过程.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http:&#x2F;&#x2F;www.newxuyangcao.top&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;pdf.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;www.newxuyangcao.top&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;his_parzen.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;www.newxuyangcao.top&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;0.1-1.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;www.newxuyangcao.top&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;1-1.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;www.newxuyangcao.top&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;5-1.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;www.newxuyangcao.top&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;0.1-2.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;www.newxuyangcao.top&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;0.5-2.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;www.newxuyangcao.top&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;1-2.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;pdf.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;his_parzen.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;0.1-1.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;1-1.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;5-1.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;0.1-2.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;0.5-2.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;1-2.png">
 <meta property="og:updated_time" content="2018-12-03T15:44:15.402Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;www.newxuyangcao.top&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;pdf.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;06&#x2F;27&#x2F;kernel-density-estimation&#x2F;pdf.png">
 
-<link rel="canonical" href="http://www.newxuyangcao.top/2018/06/27/kernel-density-estimation/">
+<link rel="canonical" href="https://xuyangcao.github.io/2018/06/27/kernel-density-estimation/">
 
 
 <script id="page-configurations">
@@ -229,7 +229,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://www.newxuyangcao.top/2018/06/27/kernel-density-estimation/">
+    <link itemprop="mainEntityOfPage" href="https://xuyangcao.github.io/2018/06/27/kernel-density-estimation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar2.gif">
@@ -461,6 +461,9 @@
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
         <a href="https://github.com/xuyangcao" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;xuyangcao" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:newxuyangcao@gmail.com" title="E-Mail &amp;rarr; mailto:newxuyangcao@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
   </div>
 
