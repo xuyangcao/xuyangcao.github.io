@@ -2,6 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xuyangcao.github.io/2019/10/26/ubuntu-ssh-ftp-vnc/</loc>
+    
+    <lastmod>2019-10-26T15:43:51.862Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2019/10/26/git-learn/</loc>
+    
+    <lastmod>2019-10-26T15:28:32.847Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2018/10/06/vim%25E9%2585%258D%25E7%25BD%25AEpython%25E7%259B%25B8%25E5%2585%25B3%25E6%258F%2592%25E4%25BB%25B6/</loc>
+    
+    <lastmod>2019-10-26T15:05:02.203Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2018/03/05/comments-my-altitude-toward-computer-aided-diagnosis/</loc>
+    
+    <lastmod>2019-10-26T15:03:41.478Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2019/10/26/ubuntu-add-new-font/</loc>
+    
+    <lastmod>2019-10-26T14:59:39.430Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2018/07/12/kalman-filter/</loc>
+    
+    <lastmod>2019-10-26T14:58:08.226Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xuyangcao.github.io/2018/10/15/medical-image-seg-random-walker/</loc>
     
     <lastmod>2019-10-26T09:33:44.207Z</lastmod>
@@ -51,13 +93,6 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/tags/index.html</loc>
-    
-    <lastmod>2018-12-03T15:44:15.422Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xuyangcao.github.io/categories/index.html</loc>
     
     <lastmod>2018-12-03T15:44:15.422Z</lastmod>
@@ -72,7 +107,7 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/10/06/vim%25E9%2585%258D%25E7%25BD%25AEpython%25E7%259B%25B8%25E5%2585%25B3%25E6%258F%2592%25E4%25BB%25B6/</loc>
+    <loc>https://xuyangcao.github.io/tags/index.html</loc>
     
     <lastmod>2018-12-03T15:44:15.422Z</lastmod>
     
@@ -86,13 +121,6 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/03/02/summarize-CT-reconstruction/</loc>
-    
-    <lastmod>2018-12-03T15:44:15.414Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xuyangcao.github.io/2018/03/02/pytorch-data-loading-and-processing/</loc>
     
     <lastmod>2018-12-03T15:44:15.414Z</lastmod>
@@ -100,14 +128,14 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/03/01/python-arguments/</loc>
+    <loc>https://xuyangcao.github.io/2018/03/02/summarize-CT-reconstruction/</loc>
     
-    <lastmod>2018-12-03T15:44:15.410Z</lastmod>
+    <lastmod>2018-12-03T15:44:15.414Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/10/13/python-model-and-package/</loc>
+    <loc>https://xuyangcao.github.io/2018/03/14/python-ubuntu16-04-install-vtk-python/</loc>
     
     <lastmod>2018-12-03T15:44:15.410Z</lastmod>
     
@@ -121,21 +149,21 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/03/14/python-ubuntu16-04-install-vtk-python/</loc>
-    
-    <lastmod>2018-12-03T15:44:15.410Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xuyangcao.github.io/2018/06/25/mfc%25E9%2581%258D%25E5%258E%2586%25E6%258C%2587%25E5%25AE%259A%25E6%2596%2587%25E4%25BB%25B6%25E5%25A4%25B9%25E4%25B8%258B%25E7%259A%2584%25E6%2589%2580%25E6%259C%2589%25E6%2596%2587%25E4%25BB%25B6/</loc>
-    
-    <lastmod>2018-12-03T15:44:15.410Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xuyangcao.github.io/2018/02/19/python-argparse/</loc>
+    
+    <lastmod>2018-12-03T15:44:15.410Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2018/03/01/python-arguments/</loc>
+    
+    <lastmod>2018-12-03T15:44:15.410Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2018/11/03/python-exception/</loc>
     
     <lastmod>2018-12-03T15:44:15.410Z</lastmod>
     
@@ -149,7 +177,14 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/11/03/python-exception/</loc>
+    <loc>https://xuyangcao.github.io/2018/10/13/python-model-and-package/</loc>
+    
+    <lastmod>2018-12-03T15:44:15.410Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2018/06/25/mfc%25E9%2581%258D%25E5%258E%2586%25E6%258C%2587%25E5%25AE%259A%25E6%2596%2587%25E4%25BB%25B6%25E5%25A4%25B9%25E4%25B8%258B%25E7%259A%2584%25E6%2589%2580%25E6%259C%2589%25E6%2596%2587%25E4%25BB%25B6/</loc>
     
     <lastmod>2018-12-03T15:44:15.410Z</lastmod>
     
@@ -177,13 +212,6 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/07/12/kalman-filter/</loc>
-    
-    <lastmod>2018-12-03T15:44:15.402Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xuyangcao.github.io/2018/11/06/dice-loss/</loc>
     
     <lastmod>2018-12-03T15:44:15.398Z</lastmod>
@@ -198,13 +226,6 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/02/25/Infimum-and-Supremum/</loc>
-    
-    <lastmod>2018-12-03T15:44:15.370Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xuyangcao.github.io/2018/02/26/convolution-arithmetic/</loc>
     
     <lastmod>2018-12-03T15:44:15.370Z</lastmod>
@@ -212,7 +233,7 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/03/05/comments-my-altitude-toward-computer-aided-diagnosis/</loc>
+    <loc>https://xuyangcao.github.io/2018/02/25/Infimum-and-Supremum/</loc>
     
     <lastmod>2018-12-03T15:44:15.370Z</lastmod>
     

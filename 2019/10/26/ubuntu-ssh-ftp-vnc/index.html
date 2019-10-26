@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+<meta name="google-site-verification" content="9xB3ICVJ53-XQqOI5rqeAH7UHVdhlnrG_0OcvFHZQIo" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="前言根据实际需求，将ubuntu系统配置为远程服务器供多人使用。 本文主要介绍四个内容：  在ubuntu上创建多个用户 配置ssh服务器（供用户进行ssh远程连接） 配置vncserver （供用户进行远程桌面访问） 配置ftp服务器 （供用户进行ftp上传与下载文件）  创建用户1. 创建新用户： 1sudo useradd -m -s &#x2F;bin&#x2F;bash -d &#x2F;home&#x2F;username">
+<meta name="keywords" content="ubuntu,ssh,ftp,vnc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu-ssh-ftp-vnc">
+<meta property="og:url" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;index.html">
+<meta property="og:site_name" content="newxuyangcao">
+<meta property="og:description" content="前言根据实际需求，将ubuntu系统配置为远程服务器供多人使用。 本文主要介绍四个内容：  在ubuntu上创建多个用户 配置ssh服务器（供用户进行ssh远程连接） 配置vncserver （供用户进行远程桌面访问） 配置ftp服务器 （供用户进行ftp上传与下载文件）  创建用户1. 创建新用户： 1sudo useradd -m -s &#x2F;bin&#x2F;bash -d &#x2F;home&#x2F;username">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;wifi-settings.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;permitrootlogin.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;timeout.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;password.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;login.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;settings.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;window-manager.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;head.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;filezilla-settings.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;filezilla-window.png">
+<meta property="og:updated_time" content="2019-10-26T15:43:51.862Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;wifi-settings.png">
+
+<link rel="canonical" href="https://xuyangcao.github.io/2019/10/26/ubuntu-ssh-ftp-vnc/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>ubuntu-ssh-ftp-vnc | newxuyangcao</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">newxuyangcao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">27</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories<span class="badge">10</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">26</span></a>
+
+  </li>
+        <li class="menu-item menu-item-cv">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>CV</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/xuyangcao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://xuyangcao.github.io/2019/10/26/ubuntu-ssh-ftp-vnc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar2.gif">
+      <meta itemprop="name" content="Xuyang Cao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="newxuyangcao">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ubuntu-ssh-ftp-vnc
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-10-26 23:14:30 / Modified: 23:43:51" itemprop="dateCreated datePublished" datetime="2019-10-26T23:14:30+08:00">2019-10-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ubuntu/" itemprop="url" rel="index">
+                    <span itemprop="name">ubuntu</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>根据实际需求，将ubuntu系统配置为远程服务器供多人使用。</p>
+<p>本文主要介绍四个内容：</p>
+<ul>
+<li>在ubuntu上创建多个用户</li>
+<li>配置ssh服务器（供用户进行ssh远程连接）</li>
+<li>配置vncserver （供用户进行远程桌面访问）</li>
+<li>配置ftp服务器 （供用户进行ftp上传与下载文件）</li>
+</ul>
+<h1 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h1><p><strong>1. 创建新用户：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo useradd -m -s /bin/bash -d /home/username username</span><br></pre></td></tr></table></figure>
+<p><strong>2. 添加管理员权限</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/sudoers</span><br></pre></td></tr></table></figure>
+<p>添加内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username ALL=(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
+<p><strong>3. 设置密码</strong><br>输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd username</span><br></pre></td></tr></table></figure>
+<p>修改密码。</p>
+<h1 id="ssh服务器"><a href="#ssh服务器" class="headerlink" title="ssh服务器"></a>ssh服务器</h1><p><strong>1. 配置端口映射</strong><br>ssh服务器默认使用<code>22</code>号端口，因为这里我用了一个路由器，因此在路由器的<code>虚拟服务器</code>功能里面添加了一个端口映射，将内部的<code>22</code>号端口映射为<code>5002</code>号端口。</p>
+<!-- ![虚拟服务器端口映射，这里的ip地址填写的是路由器给服务器分配的ip地址（局域网），如果申请连接的客户端没有连接到该路由器上，ssh连接时要写路由器上一层的ip地址](https://upload-images.jianshu.io/upload_images/14250358-1e5dbdc53d2c82f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) -->
+<img src="/2019/10/26/ubuntu-ssh-ftp-vnc/wifi-settings.png" class="" title="虚拟服务器端口映射，这里的ip地址填写的是路由器给服务器分配的ip地址（局域网），如果申请连接的客户端没有连接到该路由器上，ssh连接时要写路由器上一层的ip地址">
+
+<p><strong>2. 配置ssh服务器</strong></p>
+<ul>
+<li><p>安装openssh-server</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure>
+<p>打开”终端窗口”，输入<code>sudo ps -e |grep ssh</code>–&gt;回车–&gt;有sshd,说明ssh服务已经启动。如果没有启动，输入<code>sudo service ssh start</code>–&gt;回车–&gt;ssh服务就会启动</p>
+</li>
+<li><p>进入到<code>/etc/ssh/sshd_config</code>修改配置文件<br>将PermitRootLogin 设置为yes，如下图所示：</p>
+<!-- ![PermitRootLogin设置为yes](https://upload-images.jianshu.io/upload_images/14250358-de600d790be529a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/660) -->
+<!-- ![这里增加了最后两行，使得ssh服务器每隔一段时间和客户端通信一次，防止ssh超时断开](https://upload-images.jianshu.io/upload_images/14250358-a1a31d8d32b0b1d5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/660) -->
+<img src="/2019/10/26/ubuntu-ssh-ftp-vnc/permitrootlogin.png" class="" title="PermitRootLogin设置为yes"> <img src="/2019/10/26/ubuntu-ssh-ftp-vnc/timeout.png" class="">
+<blockquote>
+<p>注意第二张图中增加了最后两行，使得ssh服务器每隔一段时间和客户端通信一次，防止ssh超时断开</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>重启ssh服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh restart</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>完成<br>通过<code>ssh username@ip -port 5002</code>即可进入（这里将内部22号端口映射到5002号端口）</p>
+</li>
+</ul>
+<h1 id="vncserver"><a href="#vncserver" class="headerlink" title="vncserver"></a>vncserver</h1><ul>
+<li><p>安装vnc4server</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vnc4server</span><br></pre></td></tr></table></figure>
+<p>输入<code>vncserver</code>启动服务，初次启动需要设置密码，如下：</p>
+<!-- ![vncserver](https://upload-images.jianshu.io/upload_images/14250358-70c1c9bd4d591017.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) -->
+<img src="/2019/10/26/ubuntu-ssh-ftp-vnc/password.png" class="">
+</li>
+<li><p>编辑生成的xstartup文件，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line"># Uncomment the following two lines for normal desktop:</span><br><span class="line">#如果出现灰屏鼠标变X的情况将下面两行解注释即可，建议解开</span><br><span class="line"># unset SESSION_MANAGER</span><br><span class="line"># exec /etc/X11/xinit/xinitrc</span><br><span class="line"></span><br><span class="line">[ -x /etc/vnc/xstartup ] &amp;&amp; exec /etc/vnc/xstartup</span><br><span class="line">[ -r $HOME/.Xresources ] &amp;&amp; xrdb $HOME/.Xresources</span><br><span class="line">xsetroot -solid grey</span><br><span class="line">vncconfig -iconic &amp;</span><br><span class="line">#x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &amp;</span><br><span class="line">#x-window-manager &amp;</span><br><span class="line">#下面有两种界面的选择，建议xfce4，因为问题少。</span><br><span class="line">#读者根据需要选择其一，并删除汉字（我也不知道不删除会不会有影响）</span><br><span class="line">#以下是xfce4所需的配置</span><br><span class="line">sesion-manager &amp; xfdesktop &amp; xfce4-panel &amp;</span><br><span class="line">xfce4-menu-plugin &amp;</span><br><span class="line">xfsettingsd &amp;</span><br><span class="line">xfconfd &amp;</span><br><span class="line">xfwm4 &amp;</span><br><span class="line">#以下是gnome所需的一些配置</span><br><span class="line">#dbus-launch gnome-panel &amp;</span><br><span class="line">#dbus-launch gnome-settings-daemon &amp;</span><br><span class="line">#metacity &amp;</span><br><span class="line">#nautilus &amp;</span><br><span class="line">#dbus-launch gnome-terminal &amp;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<p>在图形界面中，一般有<code>gnome</code>和<code>xfc4</code>，试了一次gnome发现会有些问题，xfc4问题较少，因此也就不折腾了，上面介绍的是xfc4的配置，爱折腾的朋友可以考虑gnome的界面，这里就不在折腾了，实用为主。</p>
+<ul>
+<li>如果选择xfce4，则安装如下软件（建议选这个）：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install xfce4</span><br></pre></td></tr></table></figure></li>
+<li>如果选择gnome，则安装对应组件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>完成，打开ubuntu自带的Remmina，输入ip:port，协议选择vnc，即可登录。<!-- ![vnc](https://upload-images.jianshu.io/upload_images/14250358-87f15b2101ad77ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) -->
+<img src="/2019/10/26/ubuntu-ssh-ftp-vnc/login.png" class="">
+
+</li>
+</ul>
+<blockquote>
+<p>注意：实际操作时我们发现xfce4打开的vncviewer终端下TAB键不能自动联想，一种最简单的处理方法如下：选择Applications-&gt;Settings-&gt;Window Manager-&gt;Keyboard-&gt;Switch window for same application-&gt;Clear<br>即清除掉某个特定的快捷键即可，如下图：</p>
+</blockquote>
+<!-- ![settings](https://upload-images.jianshu.io/upload_images/14250358-c67d18f00c41e809.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) -->
+<img src="/2019/10/26/ubuntu-ssh-ftp-vnc/settings.png" class="">
+<!-- ![window manager](https://upload-images.jianshu.io/upload_images/14250358-1e84cf585f4058ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) -->
+<img src="/2019/10/26/ubuntu-ssh-ftp-vnc/window-manager.png" class="">
+
+
+<h1 id="ftp服务器"><a href="#ftp服务器" class="headerlink" title="ftp服务器"></a>ftp服务器</h1><h2 id="服务器端配置"><a href="#服务器端配置" class="headerlink" title="服务器端配置"></a>服务器端配置</h2><ul>
+<li><p>安装vsftpd</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vsftpd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改<code>/etc/vsftpd.conf</code>.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line"># Example config file /etc/vsftpd.conf</span><br><span class="line">#</span><br><span class="line"># The default compiled in settings are fairly paranoid. This sample file</span><br><span class="line"># loosens things up a bit, to make the ftp daemon more usable.</span><br><span class="line"># Please see vsftpd.conf.5 for all compiled in defaults.</span><br><span class="line">#</span><br><span class="line"># READ THIS: This example file is NOT an exhaustive list of vsftpd options.</span><br><span class="line"># Please read the vsftpd.conf.5 manual page to get a full idea of vsftpd's</span><br><span class="line"># capabilities.</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># Run standalone?  vsftpd can run either from an inetd or as a standalone</span><br><span class="line"># daemon started from an initscript.</span><br><span class="line">listen=NO</span><br><span class="line">#</span><br><span class="line"># This directive enables listening on IPv6 sockets. By default, listening</span><br><span class="line"># on the IPv6 "any" address (::) will accept connections from both IPv6</span><br><span class="line"># and IPv4 clients. It is not necessary to listen on *both* IPv4 and IPv6</span><br><span class="line"># sockets. If you want that (perhaps because you want to listen on specific</span><br><span class="line"># addresses) then you must run two copies of vsftpd with two configuration</span><br><span class="line"># files.</span><br><span class="line">listen_ipv6=YES</span><br><span class="line">#</span><br><span class="line"># Allow anonymous FTP? (Disabled by default).</span><br><span class="line">anonymous_enable=NO</span><br><span class="line">#</span><br><span class="line"># Uncomment this to allow local users to log in.</span><br><span class="line">local_enable=YES</span><br><span class="line">#</span><br><span class="line"># Uncomment this to enable any form of FTP write command.</span><br><span class="line">write_enable=YES</span><br><span class="line">#</span><br><span class="line"># Default umask for local users is 077. You may wish to change this to 022,</span><br><span class="line"># if your users expect that (022 is used by most other ftpd's)</span><br><span class="line">#local_umask=022</span><br><span class="line">#</span><br><span class="line"># Uncomment this to allow the anonymous FTP user to upload files. This only</span><br><span class="line"># has an effect if the above global write enable is activated. Also, you will</span><br><span class="line"># obviously need to create a directory writable by the FTP user.</span><br><span class="line">#anon_upload_enable=YES</span><br><span class="line">#</span><br><span class="line"># Uncomment this if you want the anonymous FTP user to be able to create</span><br><span class="line"># new directories.</span><br><span class="line">#anon_mkdir_write_enable=YES</span><br><span class="line">#</span><br><span class="line"># Activate directory messages - messages given to remote users when they</span><br><span class="line"># go into a certain directory.</span><br><span class="line">dirmessage_enable=YES</span><br><span class="line">#</span><br><span class="line"># If enabled, vsftpd will display directory listings with the time</span><br><span class="line"># in  your  local  time  zone.  The default is to display GMT. The</span><br><span class="line"># times returned by the MDTM FTP command are also affected by this</span><br><span class="line"># option.</span><br><span class="line">use_localtime=YES</span><br><span class="line">#</span><br><span class="line"># Activate logging of uploads/downloads.</span><br><span class="line">xferlog_enable=YES</span><br><span class="line">#</span><br><span class="line"># Make sure PORT transfer connections originate from port 20 (ftp-data).</span><br><span class="line">connect_from_port_20=YES</span><br><span class="line">#</span><br><span class="line"># If you want, you can arrange for uploaded anonymous files to be owned by</span><br><span class="line"># a different user. Note! Using "root" for uploaded files is not</span><br><span class="line"># recommended!</span><br><span class="line">#chown_uploads=YES</span><br><span class="line">#chown_username=whoever</span><br><span class="line">#</span><br><span class="line"># You may override where the log file goes if you like. The default is shown</span><br><span class="line"># below.</span><br><span class="line">#xferlog_file=/var/log/vsftpd.log</span><br><span class="line">#</span><br><span class="line"># If you want, you can have your log file in standard ftpd xferlog format.</span><br><span class="line"># Note that the default log file location is /var/log/xferlog in this case.</span><br><span class="line">#xferlog_std_format=YES</span><br><span class="line">#</span><br><span class="line"># You may change the default value for timing out an idle session.</span><br><span class="line">#idle_session_timeout=600</span><br><span class="line">#</span><br><span class="line"># You may change the default value for timing out a data connection.</span><br><span class="line">#data_connection_timeout=120</span><br><span class="line">#</span><br><span class="line"># It is recommended that you define on your system a unique user which the</span><br><span class="line"># ftp server can use as a totally isolated and unprivileged user.</span><br><span class="line">#nopriv_user=ftpsecure</span><br><span class="line">#</span><br><span class="line"># Enable this and the server will recognise asynchronous ABOR requests. Not</span><br><span class="line"># recommended for security (the code is non-trivial). Not enabling it,</span><br><span class="line"># however, may confuse older FTP clients.</span><br><span class="line">#async_abor_enable=YES</span><br><span class="line">#</span><br><span class="line"># By default the server will pretend to allow ASCII mode but in fact ignore</span><br><span class="line"># the request. Turn on the below options to have the server actually do ASCII</span><br><span class="line"># mangling on files when in ASCII mode.</span><br><span class="line"># Beware that on some FTP servers, ASCII support allows a denial of service</span><br><span class="line"># attack (DoS) via the command "SIZE /big/file" in ASCII mode. vsftpd</span><br><span class="line"># predicted this attack and has always been safe, reporting the size of the</span><br><span class="line"># raw file.</span><br><span class="line"># ASCII mangling is a horrible feature of the protocol.</span><br><span class="line">#ascii_upload_enable=YES</span><br><span class="line">#ascii_download_enable=YES</span><br><span class="line">#</span><br><span class="line"># You may fully customise the login banner string:</span><br><span class="line">#ftpd_banner=Welcome to blah FTP service.</span><br><span class="line">#</span><br><span class="line"># You may specify a file of disallowed anonymous e-mail addresses. Apparently</span><br><span class="line"># useful for combatting certain DoS attacks.</span><br><span class="line">#deny_email_enable=YES</span><br><span class="line"># (default follows)</span><br><span class="line">#banned_email_file=/etc/vsftpd.banned_emails</span><br><span class="line">#</span><br><span class="line"># You may restrict local users to their home directories.  See the FAQ for</span><br><span class="line"># the possible risks in this before using chroot_local_user or</span><br><span class="line"># chroot_list_enable below.</span><br><span class="line">#chroot_local_user=YES</span><br><span class="line">#</span><br><span class="line"># You may specify an explicit list of local users to chroot() to their home</span><br><span class="line"># directory. If chroot_local_user is YES, then this list becomes a list of</span><br><span class="line"># users to NOT chroot().</span><br><span class="line"># (Warning! chroot'ing can be very dangerous. If using chroot, make sure that</span><br><span class="line"># the user does not have write access to the top level directory within the</span><br><span class="line"># chroot)</span><br><span class="line">#chroot_local_user=YES</span><br><span class="line">#chroot_list_enable=YES</span><br><span class="line"># (default follows)</span><br><span class="line">#chroot_list_file=/etc/vsftpd.chroot_list</span><br><span class="line">#</span><br><span class="line"># You may activate the "-R" option to the builtin ls. This is disabled by</span><br><span class="line"># default to avoid remote users being able to cause excessive I/O on large</span><br><span class="line"># sites. However, some broken FTP clients such as "ncftp" and "mirror" assume</span><br><span class="line"># the presence of the "-R" option, so there is a strong case for enabling it.</span><br><span class="line">#ls_recurse_enable=YES</span><br><span class="line">#</span><br><span class="line"># Customization</span><br><span class="line">#</span><br><span class="line"># Some of vsftpd's settings don't fit the filesystem layout by</span><br><span class="line"># default.</span><br><span class="line">#</span><br><span class="line"># This option should be the name of a directory which is empty.  Also, the</span><br><span class="line"># directory should not be writable by the ftp user. This directory is used</span><br><span class="line"># as a secure chroot() jail at times vsftpd does not require filesystem</span><br><span class="line"># access.</span><br><span class="line">secure_chroot_dir=/var/run/vsftpd/empty</span><br><span class="line">#</span><br><span class="line"># This string is the name of the PAM service vsftpd will use.</span><br><span class="line">pam_service_name=vsftpd</span><br><span class="line">#</span><br><span class="line"># This option specifies the location of the RSA certificate to use for SSL</span><br><span class="line"># encrypted connections.</span><br><span class="line">rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem</span><br><span class="line">rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key</span><br><span class="line">ssl_enable=NO</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># Uncomment this to indicate that vsftpd use a utf8 filesystem.</span><br><span class="line">#utf8_filesystem=YES</span><br><span class="line">local_root=/home/username</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>部分参数说明:</strong></p>
+<blockquote>
+<ul>
+<li>anonymous_enable=NO 拒绝匿名登陆</li>
+<li>write_enable=YES 设置可以上传文件，这个设置看需要个人需要</li>
+<li>xferlog_enable=YES 开启日志记录</li>
+<li>xferlog_file=/var/log/vsftpd.log 设置日志文件路径</li>
+<li>xferlog_std_format=YES 设置日志格式为标准输出</li>
+<li>connect_from_port_20=YES 绑定20端口</li>
+<li>ftpd_banner=Welcome to FTP service. 欢迎语句，在使用shell时可以看到</li>
+<li>chroot_local_user=YES</li>
+<li>chroot_list_enable=YES</li>
+<li>chroot_list_file=/etc/vsftpd.chroot_list<br>上面的这几个配置实现的功能是：用户被限制在自己的主目录下。用户名单来源于/etc/vsftpd.chroot_list</li>
+<li>user_sub_token=$USER</li>
+<li>local_root=/home/$USER/ftp<br>添加一个user_sub_token ，以便插入用户名在我们local_root directory路径，以便我们的配置将为该用户，并可能被添加任何未来的用户</li>
+<li>pam_service_name=ftp原配置中为vsftpd，ubuntu用户需要更改成ftp</li>
+</ul>
+</blockquote>
+<ul>
+<li>开启或者重启vsftpd<br><strong>开启:</strong> <code>service vsftpd start</code></li>
+<li><em>重启:*</em> <code>service vsftpd restart</code></li>
+</ul>
+<h2 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h2><ul>
+<li>下载filezilla<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install filezilla</span><br></pre></td></tr></table></figure></li>
+<li>配置用户信息<br>打开filezilla，点击左上角site manager， 输入ip，端口，用户名等信息。<br>Protocol 选择SFTP</li>
+</ul>
+<!-- ![filezilla菜单栏，左上角为site manager按钮](https://upload-images.jianshu.io/upload_images/14250358-2d0c0a3bbbec35c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) -->
+<img src="/2019/10/26/ubuntu-ssh-ftp-vnc/head.png" class="">
+
+<!-- ![通过site manager设置要连接的服务器](https://upload-images.jianshu.io/upload_images/14250358-7abbcac73bcc18fc.png?imooageMogr2/auto-orient/strip%7CimageView2/2/w/1240) -->
+<img src="/2019/10/26/ubuntu-ssh-ftp-vnc/filezilla-settings.png" class="">
+<!-- ![filezilla界面，左侧为本地文件，右侧为服务器文件](https://upload-images.jianshu.io/upload_images/14250358-cb12108782a75dee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/650) -->
+
+<img src="/2019/10/26/ubuntu-ssh-ftp-vnc/filezilla-window.png" class="">
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文主要介绍了如何在ubuntu16.04上添加新用户，并配置ssh，vncviewer以及ftp服务器。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://blog.csdn.net/lj402159806/article/details/78209103" target="_blank" rel="noopener">ubuntu 16.04 搭建ftp服务器</a></li>
+<li><a href="https://blog.csdn.net/u013431916/article/details/82503137" target="_blank" rel="noopener">Ubuntu添加新用户，并创建管理员权限</a></li>
+<li><a href="https://blog.csdn.net/frank_ldw/article/details/84819343" target="_blank" rel="noopener">ubuntu系统下配置VNC服务操作步骤（VNCserver）</a></li>
+<li><a href="https://jingyan.baidu.com/article/cbcede077f59bf02f40b4ddb.html" target="_blank" rel="noopener">Ubuntu如何安装vncserve</a></li>
+<li><a href="https://jingyan.baidu.com/article/9c69d48fb9fd7b13c8024e6b.html" target="_blank" rel="noopener">Ubuntu 14.04远程登录服务器–ssh的安装和配置</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/ubuntu/" rel="tag"><i class="fa fa-tag"></i> ubuntu</a>
+              <a href="/tags/ssh/" rel="tag"><i class="fa fa-tag"></i> ssh</a>
+              <a href="/tags/ftp/" rel="tag"><i class="fa fa-tag"></i> ftp</a>
+              <a href="/tags/vnc/" rel="tag"><i class="fa fa-tag"></i> vnc</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/10/26/git-learn/" rel="next" title="git 常用命令">
+                  <i class="fa fa-chevron-left"></i> git 常用命令
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建用户"><span class="nav-number">2.</span> <span class="nav-text">创建用户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh服务器"><span class="nav-number">3.</span> <span class="nav-text">ssh服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vncserver"><span class="nav-number">4.</span> <span class="nav-text">vncserver</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ftp服务器"><span class="nav-number">5.</span> <span class="nav-text">ftp服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器端配置"><span class="nav-number">5.1.</span> <span class="nav-text">服务器端配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端配置"><span class="nav-number">5.2.</span> <span class="nav-text">客户端配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Xuyang Cao"
+    src="/images/avatar2.gif">
+  <p class="site-author-name" itemprop="name">Xuyang Cao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xuyangcao" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;xuyangcao" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:newxuyangcao@gmail.com" title="E-Mail &amp;rarr; mailto:newxuyangcao@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+      <script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=591hhldj5nm&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"></script>
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xuyang cao</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '2f344fe951fe8b9e96c4',
+      clientSecret: '0ba5131ed36da8ed9d05d37580d7ccf01607360f',
+      repo: 'xuyangcao.github.io',
+      owner: 'xuyangcao',
+      admin: ['xuyangcao'],
+      id: 'b57759e044e4d1c678c57ce3f652cb01',
+        language: '',
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
+
+</body>
+</html>
