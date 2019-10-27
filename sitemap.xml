@@ -2,9 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xuyangcao.github.io/2019/10/27/pytorch-tools/</loc>
+    
+    <lastmod>2019-10-27T02:10:23.717Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2019/10/27/python-run-code-with-probability/</loc>
+    
+    <lastmod>2019-10-27T02:06:15.297Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2019/10/27/machine-learning-measurement/</loc>
+    
+    <lastmod>2019-10-27T02:02:56.002Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2018/03/02/summarize-CT-reconstruction/</loc>
+    
+    <lastmod>2019-10-27T01:57:11.647Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2018/07/12/kalman-filter/</loc>
+    
+    <lastmod>2019-10-27T01:56:46.843Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2018/03/14/python-ubuntu16-04-install-vtk-python/</loc>
+    
+    <lastmod>2019-10-27T01:56:16.479Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2018/03/05/comments-my-altitude-toward-computer-aided-diagnosis/</loc>
+    
+    <lastmod>2019-10-27T01:55:26.179Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2019/10/27/introduction-to-deep-learning/</loc>
+    
+    <lastmod>2019-10-27T01:50:08.096Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2019/10/27/shell-python/</loc>
+    
+    <lastmod>2019-10-27T01:46:19.149Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2018/10/06/vim%25E9%2585%258D%25E7%25BD%25AEpython%25E7%259B%25B8%25E5%2585%25B3%25E6%258F%2592%25E4%25BB%25B6/</loc>
+    
+    <lastmod>2019-10-27T01:43:46.673Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2019/10/27/vim-command/</loc>
+    
+    <lastmod>2019-10-27T01:40:38.182Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xuyangcao.github.io/2019/10/26/ubuntu-ssh-ftp-vnc/</loc>
     
-    <lastmod>2019-10-26T15:56:40.813Z</lastmod>
+    <lastmod>2019-10-27T01:38:33.274Z</lastmod>
     
   </url>
   
@@ -16,20 +93,6 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/10/06/vim%25E9%2585%258D%25E7%25BD%25AEpython%25E7%259B%25B8%25E5%2585%25B3%25E6%258F%2592%25E4%25BB%25B6/</loc>
-    
-    <lastmod>2019-10-26T15:05:02.203Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xuyangcao.github.io/2018/03/05/comments-my-altitude-toward-computer-aided-diagnosis/</loc>
-    
-    <lastmod>2019-10-26T15:03:41.478Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xuyangcao.github.io/2019/10/26/ubuntu-add-new-font/</loc>
     
     <lastmod>2019-10-26T14:59:39.430Z</lastmod>
@@ -37,23 +100,9 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/07/12/kalman-filter/</loc>
-    
-    <lastmod>2019-10-26T14:58:08.226Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xuyangcao.github.io/2018/10/15/medical-image-seg-random-walker/</loc>
     
     <lastmod>2019-10-26T09:33:44.207Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xuyangcao.github.io/lib/three/package-lock.json</loc>
-    
-    <lastmod>2019-10-24T18:41:43.856Z</lastmod>
     
   </url>
   
@@ -66,6 +115,13 @@
   
   <url>
     <loc>https://xuyangcao.github.io/lib/three/renovate.json</loc>
+    
+    <lastmod>2019-10-24T18:41:43.856Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/lib/three/package-lock.json</loc>
     
     <lastmod>2019-10-24T18:41:43.856Z</lastmod>
     
@@ -93,14 +149,7 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/categories/index.html</loc>
-    
-    <lastmod>2018-12-03T15:44:15.422Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xuyangcao.github.io/2018/02/18/ubuntu-install-caffe-without-gpu/</loc>
+    <loc>https://xuyangcao.github.io/2018/10/04/%25E5%25AD%25A6%25E4%25B9%25A0python%25EF%25BC%259A%25E5%2585%25B3%25E4%25BA%258E%25E5%2587%25BD%25E6%2595%25B0%25E7%259A%2584%25E5%258F%2582%25E6%2595%25B0/</loc>
     
     <lastmod>2018-12-03T15:44:15.422Z</lastmod>
     
@@ -114,7 +163,14 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/10/04/%25E5%25AD%25A6%25E4%25B9%25A0python%25EF%25BC%259A%25E5%2585%25B3%25E4%25BA%258E%25E5%2587%25BD%25E6%2595%25B0%25E7%259A%2584%25E5%258F%2582%25E6%2595%25B0/</loc>
+    <loc>https://xuyangcao.github.io/2018/02/18/ubuntu-install-caffe-without-gpu/</loc>
+    
+    <lastmod>2018-12-03T15:44:15.422Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/categories/index.html</loc>
     
     <lastmod>2018-12-03T15:44:15.422Z</lastmod>
     
@@ -128,28 +184,7 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/03/02/summarize-CT-reconstruction/</loc>
-    
-    <lastmod>2018-12-03T15:44:15.414Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xuyangcao.github.io/2018/02/19/python-argparse/</loc>
-    
-    <lastmod>2018-12-03T15:44:15.410Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xuyangcao.github.io/2018/03/01/python-arguments/</loc>
-    
-    <lastmod>2018-12-03T15:44:15.410Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xuyangcao.github.io/2018/11/03/python-exception/</loc>
+    <loc>https://xuyangcao.github.io/2018/06/25/opencv-%25E8%258E%25B7%25E5%258F%2596%25E5%259B%25BE%25E5%2583%258F%25E6%259C%2580%25E5%25A4%25A7%25E8%25BF%259E%25E9%2580%259A%25E5%259F%259F/</loc>
     
     <lastmod>2018-12-03T15:44:15.410Z</lastmod>
     
@@ -163,7 +198,21 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/03/14/python-ubuntu16-04-install-vtk-python/</loc>
+    <loc>https://xuyangcao.github.io/2018/11/03/python-exception/</loc>
+    
+    <lastmod>2018-12-03T15:44:15.410Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2018/03/01/python-arguments/</loc>
+    
+    <lastmod>2018-12-03T15:44:15.410Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2018/02/19/python-argparse/</loc>
     
     <lastmod>2018-12-03T15:44:15.410Z</lastmod>
     
@@ -178,13 +227,6 @@
   
   <url>
     <loc>https://xuyangcao.github.io/2018/06/25/mfc%25E9%2581%258D%25E5%258E%2586%25E6%258C%2587%25E5%25AE%259A%25E6%2596%2587%25E4%25BB%25B6%25E5%25A4%25B9%25E4%25B8%258B%25E7%259A%2584%25E6%2589%2580%25E6%259C%2589%25E6%2596%2587%25E4%25BB%25B6/</loc>
-    
-    <lastmod>2018-12-03T15:44:15.410Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xuyangcao.github.io/2018/06/25/opencv-%25E8%258E%25B7%25E5%258F%2596%25E5%259B%25BE%25E5%2583%258F%25E6%259C%2580%25E5%25A4%25A7%25E8%25BF%259E%25E9%2580%259A%25E5%259F%259F/</loc>
     
     <lastmod>2018-12-03T15:44:15.410Z</lastmod>
     

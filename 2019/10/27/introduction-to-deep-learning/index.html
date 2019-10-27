@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+<meta name="google-site-verification" content="9xB3ICVJ53-XQqOI5rqeAH7UHVdhlnrG_0OcvFHZQIo" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="0. 简介本文主要介绍了使用pytorch作为框架入门深度学习。 其中第1节(深度学习入门)内容较多，建议边看第1节边实践第2节(Pytorch入门)中的内容（主要是2.1和2.2）。">
+<meta name="keywords" content="deep learning,pytorch,python,machine learning,ubuntu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pytorch 深度学习入门">
+<meta property="og:url" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;27&#x2F;introduction-to-deep-learning&#x2F;index.html">
+<meta property="og:site_name" content="newxuyangcao">
+<meta property="og:description" content="0. 简介本文主要介绍了使用pytorch作为框架入门深度学习。 其中第1节(深度学习入门)内容较多，建议边看第1节边实践第2节(Pytorch入门)中的内容（主要是2.1和2.2）。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-b3e4ec824da2e785.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;400">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-ed08a41f64f7687f.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;500">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-329284a390e045fc.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;600">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-d75066004b80f2a8.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;600">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-6ee566aa1a91afd7.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;400">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-e9142634719e933e.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;420">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-c28bd3aa4af09b74.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;445">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-a6c1a139a9059e24.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;400">
+<meta property="og:updated_time" content="2019-10-27T01:50:08.096Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-b3e4ec824da2e785.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;400">
+
+<link rel="canonical" href="https://xuyangcao.github.io/2019/10/27/introduction-to-deep-learning/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>pytorch 深度学习入门 | newxuyangcao</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">newxuyangcao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">33</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories<span class="badge">10</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">27</span></a>
+
+  </li>
+        <li class="menu-item menu-item-cv">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>CV</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/xuyangcao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://xuyangcao.github.io/2019/10/27/introduction-to-deep-learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar2.gif">
+      <meta itemprop="name" content="Xuyang Cao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="newxuyangcao">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pytorch 深度学习入门
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-10-27 09:47:36 / Modified: 09:50:08" itemprop="dateCreated datePublished" datetime="2019-10-27T09:47:36+08:00">2019-10-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">machine learning</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="0-简介"><a href="#0-简介" class="headerlink" title="0. 简介"></a>0. 简介</h1><p>本文主要介绍了使用<a href="https://pytorch.org" target="_blank" rel="noopener">pytorch</a>作为框架入门深度学习。</p>
+<p>其中第1节(深度学习入门)内容较多，建议边看第1节边实践第2节(Pytorch入门)中的内容（主要是2.1和2.2）。</p>
+<a id="more"></a>
+
+<h1 id="1-深度学习入门"><a href="#1-深度学习入门" class="headerlink" title="1. 深度学习入门"></a>1. 深度学习入门</h1><p>网上的资源非常多，这里重点推荐一个资源：斯坦福大学公开课 <a href="https://cs231n.github.io/" target="_blank" rel="noopener">CS231N</a>。</p>
+<p>对应的中文翻译及视频资料等如下：<a href="https://blog.csdn.net/hwl19951007/article/details/81570225" target="_blank" rel="noopener">CS231n 官方笔记及其中文译本</a>。</p>
+<blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/14250358-b3e4ec824da2e785.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="CS231N"></p>
+</blockquote>
+<p><strong>学习建议：</strong></p>
+<ul>
+<li>读者把截图中两个模块中涉及的文档<strong>读懂</strong>(部分代码要自己对照着原文实践) 基本上就可以入门了(预计需要半个月到一个月时间)。</li>
+<li>上述链接中的视频，作业等资料可选择性观看，主要看截图中给到的内容。笔者只看了截图中的英文资料，其他内容还没看:(, 如果读者觉得读英语效率低，可以参考对应的中文资料。</li>
+<li>这里不再推荐其他资源，对于初学者只要精通了上述内容，基本上就可以读懂绝大多数深度学习的资料了，对于里面不懂的内容可自行查找资料补充。</li>
+</ul>
+<h1 id="2-Pytorch-入门"><a href="#2-Pytorch-入门" class="headerlink" title="2. Pytorch 入门"></a>2. Pytorch 入门</h1><h2 id="2-1-安装软件"><a href="#2-1-安装软件" class="headerlink" title="2.1. 安装软件"></a>2.1. 安装软件</h2><h3 id="2-1-1-python"><a href="#2-1-1-python" class="headerlink" title="2.1.1 python"></a>2.1.1 python</h3><p>建议安装<a href="https://www.anaconda.com/distribution/" target="_blank" rel="noopener">anaconda</a>(里面集成了python解释器以及常用的python模块)。 由于清华大学镜像和中科院镜像的anaconda源未获得授权已经被关闭，因此这里给出的是官方版本，可能下载速度有点慢。读者可自行查找更快的下载方案，比如百度云。</p>
+<blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/14250358-ed08a41f64f7687f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt="Anaconda"></p>
+</blockquote>
+<ul>
+<li>建议安装python3.5以上版本</li>
+<li>windows 下安装教程：<a href="https://www.cnblogs.com/Dota-wiki/p/7871838.html" target="_blank" rel="noopener">Windows下Anaconda的安装和简单使用</a></li>
+<li>Linux 下安装教程： <a href="https://blog.csdn.net/ychgyyn/article/details/82258136" target="_blank" rel="noopener">Linux下安装Anaconda(64位)详细过程</a></li>
+</ul>
+<h3 id="2-1-2-pycharm-可选择"><a href="#2-1-2-pycharm-可选择" class="headerlink" title="2.1.2 pycharm(可选择)"></a>2.1.2 pycharm(可选择)</h3><p>这是一个IDE(软件开发环境，类似于Visual Studio), 建议读者使用。<em>但是读者也可以使用Anaconda中自带的IDE，如Spyder。或者也可以使用其他编辑器，如<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a>。</em></p>
+<ul>
+<li><strong>Windows</strong> 下的详细安装及使用教程请参考：<a href="https://blog.csdn.net/yggaoeecs/article/details/78378938" target="_blank" rel="noopener">Windows下Anaconda和PyCharm的安装与使用</a></li>
+<li><strong>Linux</strong>下的安装教程请参考(请先读完Windows下如何配置Pycharm再读下面的安装方法，Linux下配置Pycharm和Windows下相同)：<ol>
+<li><a href="https://baijiahao.baidu.com/s?id=1622347860160507809&wfr=spider&for=pc" target="_blank" rel="noopener">Linux Ubuntu系统如何安装pycharm编辑器</a></li>
+<li><a href="https://jingyan.baidu.com/article/60ccbceb4e3b0e64cab19733.html" target="_blank" rel="noopener">Ubuntu系统安装PyCharm教程（详细图文）</a></li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>建议：IDE不一定用的多的就是最好的，请读者自行选择适合自己的IDE，并且<strong>精通</strong>一个即可。</p>
+</blockquote>
+<h3 id="2-1-3-cuda（可选择）"><a href="#2-1-3-cuda（可选择）" class="headerlink" title="2.1.3 cuda（可选择）"></a>2.1.3 cuda（可选择）</h3><p>如果读者电脑上有nvidia GPU且未安装cuda，可以考虑下载并安装。这里给出建议的参考博客，不再详细介绍。</p>
+<ul>
+<li><strong>windows:</strong> <a href="https://blog.csdn.net/feihuiwu123/article/details/82838281" target="_blank" rel="noopener">Windows 10，nvidia显卡, tensorflow-gpu cuda9.0安装</a>(只看安装cuda部分即可)</li>
+<li><strong>Linux:</strong> <a href="https://blog.csdn.net/guo1988kui/article/details/82500139" target="_blank" rel="noopener">ubuntu16.04下安装GTX1080TI显卡驱动+安装CUDA</a></li>
+</ul>
+<h3 id="2-1-4-pytorch"><a href="#2-1-4-pytorch" class="headerlink" title="2.1.4 pytorch"></a>2.1.4 pytorch</h3><p>如图，登陆<a href="https://pytorch.org/" target="_blank" rel="noopener">pytorch官网</a>，在下方选好对应的pytorch版本，系统会自动给出需要运行的命令。</p>
+<p><strong>Linux 下安装教程：</strong></p>
+<blockquote>
+<ul>
+<li>Linux 下安装教程：<a href="https://blog.csdn.net/li8zi8fa/article/details/75452000" target="_blank" rel="noopener">Linux下便捷安装 Pytorch命令指南</a></li>
+</ul>
+<ul>
+<li>比如这里笔者选择satble(1.1)版本， 操作系统为Linux， 安装包使用Conda， python版本为3.6， cuda版本为9.0。<br>因此只需要在终端(Terminal)中输入如下命令：<code>conda install pytorch torchvision cudatoolkit=9.0 -c pytorch</code><br><img src="https://upload-images.jianshu.io/upload_images/14250358-329284a390e045fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="安装"></li>
+</ul>
+<p><strong>注意：这里如果读者没有安装cuda，选择None</strong></p>
+</blockquote>
+<p><strong>Windows 下安装教程:</strong></p>
+<blockquote>
+<ul>
+<li>Windows 下安装教程：<a href="https://blog.csdn.net/cuixing001/article/details/81952116#" target="_blank" rel="noopener">pytorch在windows10上安装使用</a></li>
+<li>如果系统为windows，建议按照如下配置选择：<br><img src="https://upload-images.jianshu.io/upload_images/14250358-d75066004b80f2a8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt="image.png"></li>
+</ul>
+<p><strong>注意：这里如果读者没有安装cuda，选择None</strong></p>
+</blockquote>
+<h2 id="2-2-pytorch的基本原理"><a href="#2-2-pytorch的基本原理" class="headerlink" title="2.2. pytorch的基本原理"></a>2.2. pytorch的基本原理</h2><p>这一节笔者主要看了pytorch的<a href="https://pytorch.org/" target="_blank" rel="noopener">官方文档和教程</a>，里面有很多很多例子，如果把这些例子全看完，足以满足日常使用的要求。如果时间不够充足，可以考虑先挑一些紧急的看，以后等到熟练了或者需要用到什么地方再反过头来看。</p>
+<p>下面列举了一些建议先看的内容：</p>
+<h3 id="2-2-1-60分钟入门"><a href="#2-2-1-60分钟入门" class="headerlink" title="2.2.1 60分钟入门"></a>2.2.1 <a href="https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html" target="_blank" rel="noopener">60分钟入门</a></h3><blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/14250358-6ee566aa1a91afd7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="60 min"><br>对应中文翻译：<a href="https://blog.csdn.net/u014630987/article/details/78669051" target="_blank" rel="noopener">PyTorch 深度学习:60分钟快速入门</a></p>
+</blockquote>
+<p>把上图中的五个部分读懂，大约需要一小时到两小时。这一部分主要介绍了 </p>
+<ul>
+<li>什么是pytorch?  </li>
+<li>什么是tensor？</li>
+<li>pytorch如何自动求导？</li>
+<li>什么是神经网络，如何搭建神经网络？</li>
+<li>如何从头到尾训练一个分类的神经网络模型？</li>
+<li>数据并行机制？数据怎么在多个GPU上并行运算？</li>
+</ul>
+<h3 id="2-2-2-pytorch的数据加载机制"><a href="#2-2-2-pytorch的数据加载机制" class="headerlink" title="2.2.2 pytorch的数据加载机制"></a>2.2.2 <a href="https://pytorch.org/tutorials/beginner/data_loading_tutorial.html" target="_blank" rel="noopener">pytorch的数据加载机制</a></h3><blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/14250358-e9142634719e933e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/420" alt="DATA LOADING AND PROCESSING TUTORIAL"></p>
+</blockquote>
+<p>对应中文翻译：<a href="https://www.jianshu.com/p/8b4cdd36a1b3" target="_blank" rel="noopener">PyTorch:数据加载和预处理</a></p>
+<p>这一节我认为是必看的，大约需要一到两小时读懂。读完这一节，你将学会：</p>
+<ul>
+<li>读懂别人是怎么设计DataSet的</li>
+<li>灵活地针对自己的数据定义训练过程中从磁盘上读取数据到网络中</li>
+</ul>
+<h3 id="2-2-3-模型加载和保存"><a href="#2-2-3-模型加载和保存" class="headerlink" title="2.2.3 模型加载和保存"></a>2.2.3 <a href="https://pytorch.org/tutorials/beginner/saving_loading_models.html" target="_blank" rel="noopener">模型加载和保存</a></h3><p>这一节主要讲如何将训练好的模型加载到网络中，以及如何保存训练好的模型。</p>
+<p><em>读完上述内容，基本上可以了解pytorch的原理。剩下的就是根据不同的需求看不同的内容。比如，如果读者想做迁移学习，或者强化学习，或者只是想用GAN网络，那么只需要找对应的内容即可。</em></p>
+<h2 id="2-3-Pytorch工具介绍-可选择"><a href="#2-3-Pytorch工具介绍-可选择" class="headerlink" title="2.3. Pytorch工具介绍 (可选择)"></a>2.3. Pytorch工具介绍 (可选择)</h2><p>下面的链接介绍了笔者常用的一些pytorch工具，包括</p>
+<ul>
+<li><p><a href="https://github.com/bharathgs/Awesome-pytorch-list/blob/master/README.md?utm_source=wechat_session&utm_medium=social&utm_oi=605045540921151488&from=singlemessage&isappinstalled=0" target="_blank" rel="noopener">Awesome-Pytorch-list</a>，提供了pytorch的各种工具，代码，文档等 </p>
+</li>
+<li><p>使用<a href="https://pytorch.org" target="_blank" rel="noopener">pytorch</a>+<a href="https://github.com/lanpa/tensorboardX" target="_blank" rel="noopener">tensorboardX</a>进行数据可视化处理（初学者可以不用这个，不会影响结果）</p>
+<blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/14250358-c28bd3aa4af09b74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/445" alt="tensorboardX"></p>
+</blockquote>
+</li>
+<li><p>使用<a href="https://github.com/mdbloice/Augmentor" target="_blank" rel="noopener">Augomentor</a>进行数据的扩增处理</p>
+<blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/14250358-a6c1a139a9059e24.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" alt="Augomentor"></p>
+</blockquote>
+</li>
+</ul>
+<h1 id="3-补充说明"><a href="#3-补充说明" class="headerlink" title="3. 补充说明"></a>3. 补充说明</h1><ul>
+<li><p>上述关于pytorch的内容建议直接看英文文档，如果读者觉得看英语效率低，请自己找一下对应的中文翻译。这里笔者只找了部分内容供读者参考。</p>
+</li>
+<li><p>关于看书还是官方文档。每个人习惯不一样，笔者倾向于不看书。因为现有的关于pytorch的个人认为写的较为粗浅，甚至还不如官方教程细致；pytorch更新较快，官方教程也是每隔一段时间就会更新一下，而书很难跟上最新的更新。</p>
+</li>
+<li><p>如果读者想了解更多，除了看<a href="https://pytorch.org/tutorials/" target="_blank" rel="noopener">官方教程</a>，还建议读一读<a href="https://github.com/pytorch/pytorch" target="_blank" rel="noopener">源码</a>。</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/deep-learning/" rel="tag"><i class="fa fa-tag"></i> deep learning</a>
+              <a href="/tags/pytorch/" rel="tag"><i class="fa fa-tag"></i> pytorch</a>
+              <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+              <a href="/tags/machine-learning/" rel="tag"><i class="fa fa-tag"></i> machine learning</a>
+              <a href="/tags/ubuntu/" rel="tag"><i class="fa fa-tag"></i> ubuntu</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/10/27/shell-python/" rel="next" title="shell-python">
+                  <i class="fa fa-chevron-left"></i> shell-python
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/10/27/machine-learning-measurement/" rel="prev" title="机器学习中的一些评价指标">
+                  机器学习中的一些评价指标 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-简介"><span class="nav-number">1.</span> <span class="nav-text">0. 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-深度学习入门"><span class="nav-number">2.</span> <span class="nav-text">1. 深度学习入门</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Pytorch-入门"><span class="nav-number">3.</span> <span class="nav-text">2. Pytorch 入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-安装软件"><span class="nav-number">3.1.</span> <span class="nav-text">2.1. 安装软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-python"><span class="nav-number">3.1.1.</span> <span class="nav-text">2.1.1 python</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-pycharm-可选择"><span class="nav-number">3.1.2.</span> <span class="nav-text">2.1.2 pycharm(可选择)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-cuda（可选择）"><span class="nav-number">3.1.3.</span> <span class="nav-text">2.1.3 cuda（可选择）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-4-pytorch"><span class="nav-number">3.1.4.</span> <span class="nav-text">2.1.4 pytorch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-pytorch的基本原理"><span class="nav-number">3.2.</span> <span class="nav-text">2.2. pytorch的基本原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-60分钟入门"><span class="nav-number">3.2.1.</span> <span class="nav-text">2.2.1 60分钟入门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-pytorch的数据加载机制"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.2.2 pytorch的数据加载机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-模型加载和保存"><span class="nav-number">3.2.3.</span> <span class="nav-text">2.2.3 模型加载和保存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Pytorch工具介绍-可选择"><span class="nav-number">3.3.</span> <span class="nav-text">2.3. Pytorch工具介绍 (可选择)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-补充说明"><span class="nav-number">4.</span> <span class="nav-text">3. 补充说明</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Xuyang Cao"
+    src="/images/avatar2.gif">
+  <p class="site-author-name" itemprop="name">Xuyang Cao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xuyangcao" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;xuyangcao" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:newxuyangcao@gmail.com" title="E-Mail &amp;rarr; mailto:newxuyangcao@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+      <script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=591hhldj5nm&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"></script>
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xuyang cao</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '2f344fe951fe8b9e96c4',
+      clientSecret: '0ba5131ed36da8ed9d05d37580d7ccf01607360f',
+      repo: 'xuyangcao.github.io',
+      owner: 'xuyangcao',
+      admin: ['xuyangcao'],
+      id: '4fae132f86314af348cd848ef6c9c531',
+        language: '',
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
+
+</body>
+</html>

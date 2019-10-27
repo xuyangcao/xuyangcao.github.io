@@ -51,14 +51,20 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="newxuyangcao">
-<meta property="og:url" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;tags&#x2F;pattern-recognation&#x2F;index.html">
+  <meta name="description" content="PrecisionRecallAccuracy$F_1$ Score$F_\beta$ ScoreDicePR CurveROC Curve">
+<meta name="keywords" content="machine learning,segmentation,measurement">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习中的一些评价指标">
+<meta property="og:url" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;27&#x2F;machine-learning-measurement&#x2F;index.html">
 <meta property="og:site_name" content="newxuyangcao">
+<meta property="og:description" content="PrecisionRecallAccuracy$F_1$ Score$F_\beta$ ScoreDicePR CurveROC Curve">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-e996a0a147585b82.jpg">
+<meta property="og:updated_time" content="2019-10-27T02:02:56.002Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-e996a0a147585b82.jpg">
 
-<link rel="canonical" href="https://xuyangcao.github.io/tags/pattern-recognation/">
+<link rel="canonical" href="https://xuyangcao.github.io/2019/10/27/machine-learning-measurement/">
 
 
 <script id="page-configurations">
@@ -66,13 +72,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Tag: pattern recognation | newxuyangcao</title>
+  <title>机器学习中的一些评价指标 | newxuyangcao</title>
   
 
 
@@ -144,7 +150,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">27</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">33</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -154,7 +160,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">26</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">27</span></a>
 
   </li>
         <li class="menu-item menu-item-cv">
@@ -211,54 +217,118 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">pattern recognation
-          <small>Tag</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://xuyangcao.github.io/2019/10/27/machine-learning-measurement/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar2.gif">
+      <meta itemprop="name" content="Xuyang Cao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="newxuyangcao">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          机器学习中的一些评价指标
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-10-27 09:59:15 / Modified: 10:02:56" itemprop="dateCreated datePublished" datetime="2019-10-27T09:59:15+08:00">2019-10-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/machine-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">machine learning</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2018</h1>
+        <h1 id="Precision"><a href="#Precision" class="headerlink" title="Precision"></a>Precision</h1><h1 id="Recall"><a href="#Recall" class="headerlink" title="Recall"></a>Recall</h1><h1 id="Accuracy"><a href="#Accuracy" class="headerlink" title="Accuracy"></a>Accuracy</h1><h1 id="F-1-Score"><a href="#F-1-Score" class="headerlink" title="$F_1$ Score"></a>$F_1$ Score</h1><h1 id="F-beta-Score"><a href="#F-beta-Score" class="headerlink" title="$F_\beta$ Score"></a>$F_\beta$ Score</h1><h1 id="Dice"><a href="#Dice" class="headerlink" title="Dice"></a>Dice</h1><h1 id="PR-Curve"><a href="#PR-Curve" class="headerlink" title="PR Curve"></a>PR Curve</h1><h1 id="ROC-Curve"><a href="#ROC-Curve" class="headerlink" title="ROC Curve"></a>ROC Curve</h1><a id="more"></a>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/14250358-e996a0a147585b82.jpg" alt="笔记"></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ol>
+<li><a href="https://www.docin.com/p-863413915.html" target="_blank" rel="noopener">调和平均数的物理意义</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Harmonic_mean" target="_blank" rel="noopener">wikipedia Harmonic mean</a></li>
+<li><a href="https://baike.baidu.com/item/%E8%B0%83%E5%92%8C%E5%B9%B3%E5%9D%87%E6%95%B0" target="_blank" rel="noopener">百度百科：调和平均数</a></li>
+<li><a href="https://baike.baidu.com/item/F1%E5%88%86%E6%95%B0/13864979?fr=aladdin" target="_blank" rel="noopener">百度百科：$F_1$分数</a></li>
+<li><a href="https://blog.csdn.net/qq_14997473/article/details/82684300" target="_blank" rel="noopener">CSDN:机器学习中的F1-score</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Tversky_index" target="_blank" rel="noopener">wikipedia Tversky index</a></li>
+<li>Tversky, Amos (1977). <a href="http://www.cogsci.ucsd.edu/~coulson/203/tversky-features.pdf" target="_blank" rel="noopener">“Features of Similarity”</a> (PDF). <em>Psychological Review</em>. <strong>84</strong> (4): 327–352. <a href="https://en.wikipedia.org/wiki/Digital_object_identifier" target="_blank" rel="noopener" title="Digital object identifier">doi</a>:<a href="https://doi.org/10.1037%2F0033-295x.84.4.327" target="_blank" rel="noopener">10.1037/0033-295x.84.4.32</a></li>
+<li><a href="https://blog.exsilio.com/all/accuracy-precision-recall-f1-score-interpretation-of-performance-measures/" target="_blank" rel="noopener">Accuracy, Precision, Recall &amp; F1 Score: Interpretation of Performance Measures</a></li>
+</ol>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-07-12T23:07:02+08:00"
-              content="2018-07-12">
-          07-12
-        </time>
-      </div>
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/machine-learning/" rel="tag"><i class="fa fa-tag"></i> machine learning</a>
+              <a href="/tags/segmentation/" rel="tag"><i class="fa fa-tag"></i> segmentation</a>
+              <a href="/tags/measurement/" rel="tag"><i class="fa fa-tag"></i> measurement</a>
+          </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2018/07/12/kalman-filter/" itemprop="url">
-            <span itemprop="name">learn kalman-filter (学习卡尔曼滤波)</span>
-          </a>
-      </h2>
+        
 
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/10/27/introduction-to-deep-learning/" rel="next" title="pytorch 深度学习入门">
+                  <i class="fa fa-chevron-left"></i> pytorch 深度学习入门
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/10/27/python-run-code-with-probability/" rel="prev" title="python-run-code-with-probability">
+                  python-run-code-with-probability <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
         </div>
           
@@ -283,6 +353,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Precision"><span class="nav-number">1.</span> <span class="nav-text">Precision</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Recall"><span class="nav-number">2.</span> <span class="nav-text">Recall</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Accuracy"><span class="nav-number">3.</span> <span class="nav-text">Accuracy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#F-1-Score"><span class="nav-number">4.</span> <span class="nav-text">$F_1$ Score</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#F-beta-Score"><span class="nav-number">5.</span> <span class="nav-text">$F_\beta$ Score</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dice"><span class="nav-number">6.</span> <span class="nav-text">Dice</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PR-Curve"><span class="nav-number">7.</span> <span class="nav-text">PR Curve</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ROC-Curve"><span class="nav-number">8.</span> <span class="nav-text">ROC Curve</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">9.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -298,7 +369,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -311,7 +382,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -428,11 +499,76 @@ if (document.querySelectorAll('pre.mermaid').length) {
   
 
   
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '2f344fe951fe8b9e96c4',
+      clientSecret: '0ba5131ed36da8ed9d05d37580d7ccf01607360f',
+      repo: 'xuyangcao.github.io',
+      owner: 'xuyangcao',
+      admin: ['xuyangcao'],
+      id: '651eaa37cc040aa95f231886bb786f12',
+        language: '',
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
 
 </body>
 </html>

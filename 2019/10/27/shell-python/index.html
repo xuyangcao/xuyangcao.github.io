@@ -51,14 +51,18 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="newxuyangcao">
-<meta property="og:url" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;tags&#x2F;ct-reconstruction&#x2F;index.html">
+  <meta name="description" content="背景：  python代码一次运行需要几个小时，为了充分利用时间，利用shell批量运行python代码。 需求：  运行同样代码，只不过传入的参数不同 一个python script 运行完之后才能运行下一个">
+<meta name="keywords" content="python,shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell-python">
+<meta property="og:url" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;27&#x2F;shell-python&#x2F;index.html">
 <meta property="og:site_name" content="newxuyangcao">
+<meta property="og:description" content="背景：  python代码一次运行需要几个小时，为了充分利用时间，利用shell批量运行python代码。 需求：  运行同样代码，只不过传入的参数不同 一个python script 运行完之后才能运行下一个">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-27T01:46:19.149Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://xuyangcao.github.io/tags/ct-reconstruction/">
+<link rel="canonical" href="https://xuyangcao.github.io/2019/10/27/shell-python/">
 
 
 <script id="page-configurations">
@@ -66,13 +70,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Tag: ct reconstruction | newxuyangcao</title>
+  <title>shell-python | newxuyangcao</title>
   
 
 
@@ -144,7 +148,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">27</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">33</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -154,7 +158,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">26</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">27</span></a>
 
   </li>
         <li class="menu-item menu-item-cv">
@@ -211,54 +215,121 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">ct reconstruction
-          <small>Tag</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://xuyangcao.github.io/2019/10/27/shell-python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar2.gif">
+      <meta itemprop="name" content="Xuyang Cao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="newxuyangcao">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          shell-python
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-10-27 09:45:25 / Modified: 09:46:19" itemprop="dateCreated datePublished" datetime="2019-10-27T09:45:25+08:00">2019-10-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2018</h1>
+        <ul>
+<li><strong>背景：</strong><br>  python代码一次运行需要几个小时，为了充分利用时间，利用shell批量运行python代码。</li>
+<li><strong>需求：</strong> <ul>
+<li>运行同样代码，只不过传入的参数不同</li>
+<li>一个python script 运行完之后才能运行下一个</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li><strong>demo：</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test_demo.sh</span></span><br><span class="line">python test.py 0</span><br><span class="line"><span class="built_in">echo</span> script 0 is over! </span><br><span class="line">  </span><br><span class="line">python test.py 1</span><br><span class="line"><span class="built_in">echo</span> script 1 is over!</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test.py</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> sys </span><br><span class="line"></span><br><span class="line">name = sys.argv[<span class="number">1</span>]</span><br><span class="line">print(name)</span><br><span class="line">time.sleep(<span class="number">3</span>)</span><br><span class="line">print(<span class="string">'done! %s'</span>%(name))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; chmod +x test_demo.sh</span><br><span class="line">&gt; ./test_demo.sh</span><br><span class="line"><span class="comment"># output </span></span><br><span class="line">0</span><br><span class="line"><span class="keyword">done</span>! 0</span><br><span class="line">script 0 is over!</span><br><span class="line">1</span><br><span class="line"><span class="keyword">done</span>! 1</span><br><span class="line">script 1 is over!</span><br></pre></td></tr></table></figure>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-03-02T12:48:20+08:00"
-              content="2018-03-02">
-          03-02
-        </time>
-      </div>
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+              <a href="/tags/shell/" rel="tag"><i class="fa fa-tag"></i> shell</a>
+          </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2018/03/02/summarize-CT-reconstruction/" itemprop="url">
-            <span itemprop="name">summarize: CT 重建小结</span>
-          </a>
-      </h2>
+        
 
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/10/27/vim-command/" rel="next" title="vim 常用命令">
+                  <i class="fa fa-chevron-left"></i> vim 常用命令
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/10/27/introduction-to-deep-learning/" rel="prev" title="pytorch 深度学习入门">
+                  pytorch 深度学习入门 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
         </div>
           
@@ -298,7 +369,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -311,7 +382,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -433,6 +504,23 @@ if (document.querySelectorAll('pre.mermaid').length) {
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '2f344fe951fe8b9e96c4',
+      clientSecret: '0ba5131ed36da8ed9d05d37580d7ccf01607360f',
+      repo: 'xuyangcao.github.io',
+      owner: 'xuyangcao',
+      admin: ['xuyangcao'],
+      id: '38b0a66a4db630e469cae8e1cd193fba',
+        language: '',
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
 
 </body>
 </html>

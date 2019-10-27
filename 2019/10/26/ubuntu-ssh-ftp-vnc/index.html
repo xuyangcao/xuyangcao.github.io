@@ -54,7 +54,7 @@
   <meta name="description" content="前言根据实际需求，将ubuntu系统配置为远程服务器供多人使用。 本文主要介绍四个内容：  在ubuntu上创建多个用户 配置ssh服务器（供用户进行ssh远程连接） 配置vncserver （供用户进行远程桌面访问） 配置ftp服务器 （供用户进行ftp上传与下载文件）">
 <meta name="keywords" content="ubuntu,ssh,ftp,vnc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu-ssh-ftp-vnc">
+<meta property="og:title" content="ubuntu 16.04 配置ssh，vnc及ftp远程连接">
 <meta property="og:url" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;index.html">
 <meta property="og:site_name" content="newxuyangcao">
 <meta property="og:description" content="前言根据实际需求，将ubuntu系统配置为远程服务器供多人使用。 本文主要介绍四个内容：  在ubuntu上创建多个用户 配置ssh服务器（供用户进行ssh远程连接） 配置vncserver （供用户进行远程桌面访问） 配置ftp服务器 （供用户进行ftp上传与下载文件）">
@@ -69,7 +69,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;head.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;filezilla-settings.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;filezilla-window.png">
-<meta property="og:updated_time" content="2019-10-26T15:56:40.813Z">
+<meta property="og:updated_time" content="2019-10-27T01:38:33.274Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;26&#x2F;ubuntu-ssh-ftp-vnc&#x2F;wifi-settings.png">
 
@@ -87,7 +87,7 @@
   };
 </script>
 
-  <title>ubuntu-ssh-ftp-vnc | newxuyangcao</title>
+  <title>ubuntu 16.04 配置ssh，vnc及ftp远程连接 | newxuyangcao</title>
   
 
 
@@ -159,7 +159,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">27</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">33</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -169,7 +169,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">26</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">27</span></a>
 
   </li>
         <li class="menu-item menu-item-cv">
@@ -244,7 +244,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          ubuntu-ssh-ftp-vnc
+          ubuntu 16.04 配置ssh，vnc及ftp远程连接
         </h1>
 
         <div class="post-meta">
@@ -253,10 +253,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2019-10-26 23:14:30 / Modified: 23:56:40" itemprop="dateCreated datePublished" datetime="2019-10-26T23:14:30+08:00">2019-10-26</time>
+              <time title="Created: 2019-10-26 23:14:30" itemprop="dateCreated datePublished" datetime="2019-10-26T23:14:30+08:00">2019-10-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-27 09:38:33" itemprop="dateModified" datetime="2019-10-27T09:38:33+08:00">2019-10-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -440,6 +446,9 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+                <a href="/2019/10/27/vim-command/" rel="prev" title="vim 常用命令">
+                  vim 常用命令 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
       </footer>
@@ -495,7 +504,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -508,7 +517,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
