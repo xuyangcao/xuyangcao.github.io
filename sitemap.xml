@@ -2,16 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xuyangcao.github.io/2019/10/27/pandas-dataframe-application/</loc>
+    
+    <lastmod>2019-10-27T02:56:24.619Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2019/10/27/connetted-conponents-tools/</loc>
+    
+    <lastmod>2019-10-27T02:52:16.494Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xuyangcao.github.io/2019/10/27/pytorch-tools/</loc>
     
-    <lastmod>2019-10-27T02:10:23.717Z</lastmod>
+    <lastmod>2019-10-27T02:49:54.800Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://xuyangcao.github.io/2019/10/27/python-run-code-with-probability/</loc>
     
-    <lastmod>2019-10-27T02:06:15.297Z</lastmod>
+    <lastmod>2019-10-27T02:49:35.633Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2019/10/27/introduction-to-CE-loss/</loc>
+    
+    <lastmod>2019-10-27T02:03:15.266Z</lastmod>
     
   </url>
   
@@ -114,14 +135,14 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/lib/three/renovate.json</loc>
+    <loc>https://xuyangcao.github.io/lib/three/package-lock.json</loc>
     
     <lastmod>2019-10-24T18:41:43.856Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/lib/three/package-lock.json</loc>
+    <loc>https://xuyangcao.github.io/lib/three/renovate.json</loc>
     
     <lastmod>2019-10-24T18:41:43.856Z</lastmod>
     
@@ -149,20 +170,6 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/10/04/%25E5%25AD%25A6%25E4%25B9%25A0python%25EF%25BC%259A%25E5%2585%25B3%25E4%25BA%258E%25E5%2587%25BD%25E6%2595%25B0%25E7%259A%2584%25E5%258F%2582%25E6%2595%25B0/</loc>
-    
-    <lastmod>2018-12-03T15:44:15.422Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xuyangcao.github.io/tags/index.html</loc>
-    
-    <lastmod>2018-12-03T15:44:15.422Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://xuyangcao.github.io/2018/02/18/ubuntu-install-caffe-without-gpu/</loc>
     
     <lastmod>2018-12-03T15:44:15.422Z</lastmod>
@@ -177,9 +184,30 @@
   </url>
   
   <url>
+    <loc>https://xuyangcao.github.io/tags/index.html</loc>
+    
+    <lastmod>2018-12-03T15:44:15.422Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2018/10/04/%25E5%25AD%25A6%25E4%25B9%25A0python%25EF%25BC%259A%25E5%2585%25B3%25E4%25BA%258E%25E5%2587%25BD%25E6%2595%25B0%25E7%259A%2584%25E5%258F%2582%25E6%2595%25B0/</loc>
+    
+    <lastmod>2018-12-03T15:44:15.422Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xuyangcao.github.io/2018/03/02/pytorch-data-loading-and-processing/</loc>
     
     <lastmod>2018-12-03T15:44:15.414Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuyangcao.github.io/2018/10/13/python-model-and-package/</loc>
+    
+    <lastmod>2018-12-03T15:44:15.410Z</lastmod>
     
   </url>
   
@@ -198,7 +226,7 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/11/03/python-exception/</loc>
+    <loc>https://xuyangcao.github.io/2018/02/19/python-argparse/</loc>
     
     <lastmod>2018-12-03T15:44:15.410Z</lastmod>
     
@@ -212,14 +240,7 @@
   </url>
   
   <url>
-    <loc>https://xuyangcao.github.io/2018/02/19/python-argparse/</loc>
-    
-    <lastmod>2018-12-03T15:44:15.410Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xuyangcao.github.io/2018/10/13/python-model-and-package/</loc>
+    <loc>https://xuyangcao.github.io/2018/11/03/python-exception/</loc>
     
     <lastmod>2018-12-03T15:44:15.410Z</lastmod>
     

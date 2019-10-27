@@ -4,7 +4,59 @@
   
     
     <entry>
-      <title>pytorch-tools</title>
+      <title>pandas DataFrame数据画图并通过matplotlib保存</title>
+      <link href="/2019/10/27/pandas-dataframe-application/"/>
+      <url>/2019/10/27/pandas-dataframe-application/</url>
+      
+        <content type="html"><![CDATA[<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>这里想把数据组合到pandas的dataframe中，然后画一个条形图，通过matplotlib保存下来。</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><a id="more"></a><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#3.2 bar</span></span><br><span class="line"><span class="keyword">if</span> pre_path1 <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">    index = [filename[:<span class="number">-4</span>] <span class="keyword">for</span> filename <span class="keyword">in</span> file_names]</span><br><span class="line">    fig = plt.figure() <span class="comment"># create a figure</span></span><br><span class="line">    fig.suptitle(<span class="string">'dice and haus in test-set'</span>)</span><br><span class="line"></span><br><span class="line">    ax1 = fig.add_subplot(<span class="number">121</span>) <span class="comment"># add an axis</span></span><br><span class="line">    ax1.set_title(<span class="string">'dice'</span>)</span><br><span class="line">    dice_info = &#123;pre_path:dice_list, pre_path1:dice_list1&#125;</span><br><span class="line">    df = pd.DataFrame(dice_info, index=index)</span><br><span class="line">    df.plot(ax=ax1, kind=<span class="string">'bar'</span>) <span class="comment"># plot data into axis</span></span><br><span class="line"></span><br><span class="line">    ax2 = fig.add_subplot(<span class="number">122</span>)</span><br><span class="line">    ax2.set_title(<span class="string">'haus'</span>)</span><br><span class="line">    haus_info = &#123;pre_path:haus_list, pre_path1:haus_list1&#125;</span><br><span class="line">    df = pd.DataFrame(haus_info, index=index)</span><br><span class="line">    df.plot(ax=ax2, kind=<span class="string">'bar'</span>)</span><br><span class="line"></span><br><span class="line">    plt.tight_layout()</span><br><span class="line">    fig.savefig(args.save_path[:<span class="number">-3</span>]+<span class="string">'_bar.png'</span>)</span><br></pre></td></tr></table></figure><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol><li><a href="https://matplotlib.org/gallery/subplots_axes_and_figures/figure_title.html" target="_blank" rel="noopener">Matplotlib figure title</a></li><li><a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.plot.bar.html" target="_blank" rel="noopener">pandas.DataFrame.plot.bar</a></li><li><a href="https://stackoverflow.com/questions/50863575/pandas-bar-plot-using-subplots" target="_blank" rel="noopener">Pandas Bar Plot using Subplots</a></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> image processing </tag>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>图像的连通域标记算法及工具介绍</title>
+      <link href="/2019/10/27/connetted-conponents-tools/"/>
+      <url>/2019/10/27/connetted-conponents-tools/</url>
+      
+        <content type="html"><![CDATA[<p><em>注：本文大部分内容来源于<a href="http://aishack.in/tutorials/labelling-connected-components-example/" target="_blank" rel="noopener">网络</a>，尤其是原理部分图片全部非本人所作</em></p><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>之前在<a href="https://blog.csdn.net/xuyangcao123/article/details/81023732" target="_blank" rel="noopener">CSDN</a>上介绍过一个关于如何使用skimage以及opencv标记二值图像的连通域问题。实际上估计不是太多的人懂得标记连通域的原理，加上在医学图像处理中，我们常常用到3维图像，而上述工具只解决了2维图像上的情况，并不支持3维图像的标记(目前还不支持)，因此有必要对这个连通域标记算法进行进一步说明。</p><p>本文主要介绍两点，一是<strong>介绍一种连通域标记的算法</strong>，中文翻译过来我给它叫两阶段法(two pass); 另一个方面在2维连通域标记的基础上<strong>介绍一个新的高效的3维连通域标记工具</strong>。</p><p>通过这个简单的原理，相信读者可以根据需求自己去写一个更高效的连通域标记算法。</p><a id="more"></a><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>如图1所示，对于一个二值图像，其前景为1，背景为0，我们希望给其相连的前景部分标记为同一个label，不同的连通域标记为不同的label，我们希望得到的最终结果如图2所示(我是真的不知道简书该怎么并排显示图像…)。<br><img src="https://upload-images.jianshu.io/upload_images/14250358-66249154cff0c0ad.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图1 简单示例"></p><p><img src="https://upload-images.jianshu.io/upload_images/14250358-4325c1b40465163a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/200" alt="图2 连通域标记最终结果"></p><p>一种标记连通域的方法叫两阶段法，也就是说，通过遍历两次图像上的点就可以完成标记工作，下面我们主要看看它是怎么工作的。</p><h2 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h2><p>从图3开始，我们从图像的左上角点遍历整个图像。对于第一个黄点(0,0)，我们检查它的上边和左边有没有已经标记好的label，显然没有，因此给其标记为<code>1</code>. 如图3.<br><img src="https://upload-images.jianshu.io/upload_images/14250358-675a017dd636f3f7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图3 label-step1"><br>接下来看第二个像素(0, 1), 继续检查它的左边和上边是否有标记好的像素，由于它左边的一个像素已经标记为<code>1</code>， 因此第二个像素也标记为<code>1</code>. 由于第三个像素(0, 2)是一个背景点，因此直接跳过。再看第4个像素(0, 3)，由于其左边是背景，因此认为其左边没有标记，同时上边也没有标记，因此需要给它一个新的label，<code>2</code>. 如图4.<br><img src="https://upload-images.jianshu.io/upload_images/14250358-f258cb3bd42e8a30.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图4 label-step2"><br>接下来同理，直到第一行的最后一个像素，我们有了三个标记。如图5.<br><img src="https://upload-images.jianshu.io/upload_images/14250358-110dbb1dec29253a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图5 label-step3"><br>第二行同理，我们看到目前为止还没有出现什么意外，只要检查一个像素的左边和上边是否有标记，如果有，就给它打上同样的标记即可。如图6.<br><img src="https://upload-images.jianshu.io/upload_images/14250358-ad3a483cb1a452b1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图6 label-step4"><br>到了第三行的第四个元素(2, 3)，我们发现了一个意外情况，就是该像素的上边有了一个label <code>2</code>，而它的左边同样也有一个label <code>1</code>，这怎么办呢？ 这种情况下，我们给该像素标记为两个label中较小的那个，也就是<code>1</code>，同时还要有另一个操作，就是让label <code>2</code>隶属于 label <code>1</code>，如图7.<br><img src="https://upload-images.jianshu.io/upload_images/14250358-35a8f562ae8a1e2f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图7 label-step5"></p><p>有了上述处理矛盾的情况，我们就可以继续往下标记了。始终坚持以下原则：</p><ul><li>如果遇上一个背景点，直接跳过，不做处理。</li><li>如果对于一个像素点，其上面和左边都没有标记好的label，那么就从小到达给它一个新的label。</li><li>如果对于一个像素点，其上面或者/并且左边已经有了标记好的label，且label不冲突，那就把这个像素也标记成同样的label</li><li>如果对于一个像素，其上面和左边都有了label，且两个label冲突了，那么就把该像素标记为较小的那个label，同时记住较大的label隶属于较小的label。</li></ul><p>遵循上述原则可以得到图8-12的结果：<br><img src="https://upload-images.jianshu.io/upload_images/14250358-1fc5090f04d44916.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图8 label-step6"></p><p><img src="https://upload-images.jianshu.io/upload_images/14250358-30650ad53da05ea6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图9 label-step7"></p><p><img src="https://upload-images.jianshu.io/upload_images/14250358-0970912f222e0265.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图10 label-step8"></p><p><img src="https://upload-images.jianshu.io/upload_images/14250358-913b5b400675b680.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图11 label-step9"></p><p><img src="https://upload-images.jianshu.io/upload_images/14250358-03f1b0b00621bfe0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图12 label-step10"><br>至此我们标记完了图像上的每一个像素，并给他们赋了一个值，唯一的问题在于有些连通域我们看着是一个，但是却给了它两个label，但是好在我们知道他们label的继承关系，因此第二遍就是把具有继承关系的部分给合并成为一个。</p><h2 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h2><p>依然从左上角点开始遍历，每遍历一个label，都要查查该像素是否具有继承关系。比如第一个像素(0, 0),由于它是<code>1</code>，发现了它有继承关系，但是好在他是父label，因此不用管他；当到了第三个像素(0, 2)，是个背景，不需要管它，直接跳过，也不用查继承关系；当到了第四个像素，查到了label  <code>2</code> 具有继承关系，且label <code>2</code> 隶属于label <code>1</code>， 不好意思，我们就不要label <code>2</code>了，直接把它改为label <code>1</code>，后面的以此类推。图13-16都遵循上述原则。<br><img src="https://upload-images.jianshu.io/upload_images/14250358-5cb6be2c4414cd28.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图13 label-step11"></p><p><img src="https://upload-images.jianshu.io/upload_images/14250358-795e625d99298aa6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图14 label-step12"></p><p><img src="https://upload-images.jianshu.io/upload_images/14250358-0375272356c7d5f2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图15 label-step13"></p><p><img src="https://upload-images.jianshu.io/upload_images/14250358-ba81e9f31d2827c3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图16 label-step14"><br>至此，我们第二次遍历完了整个图像，同时也把所有的连通域标记完了。</p><p>至此，我们大概了解了两阶段法标记连通域的基本原理，希望能够对读者有所帮助。</p><h1 id="工具介绍"><a href="#工具介绍" class="headerlink" title="工具介绍"></a>工具介绍</h1><p>这方面的工具很多，我自己常用的有这么3个：一个是scikit image, 一个是opencv3，这两个工具目前只支持2维图像的连通域标记。还有一个是github上的一个开源工具，比较高效的完成了3维图像的连通域标记，也是近期发现的，感谢作者吧，哈哈。</p><ol><li>skimage的连通域标记算法<br><a href="http://scikit-image.org/docs/dev/api/skimage.measure.html#skimage.measure.label" target="_blank" rel="noopener">skimage.messure.label</a></li><li>opencv3的连通域标记算法<br><a href="https://docs.opencv.org/3.1.0/d3/dc0/group__imgproc__shape.html#gac2718a64ade63475425558aa669a943a" target="_blank" rel="noopener">connectedComponents</a></li><li>一个高效的3d连通域标记算法<br><a href="https://github.com/seung-lab/connected-components-3d" target="_blank" rel="noopener">connected-components-3d</a></li></ol><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://github.com/seung-lab/connected-components-3d" target="_blank" rel="noopener">1. github-connected-components-3d</a><br><a href="http://aishack.in/tutorials/labelling-connected-components-example/" target="_blank" rel="noopener">2. Connected Component Labelling</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> image processing </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> image processing </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>pytorch工具</title>
       <link href="/2019/10/27/pytorch-tools/"/>
       <url>/2019/10/27/pytorch-tools/</url>
       
@@ -29,7 +81,7 @@
     
     
     <entry>
-      <title>python-run-code-with-probability</title>
+      <title>Python以一定概率执行某段代码</title>
       <link href="/2019/10/27/python-run-code-with-probability/"/>
       <url>/2019/10/27/python-run-code-with-probability/</url>
       
@@ -75,6 +127,35 @@
             <tag> segmentation </tag>
             
             <tag> measurement </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于交叉熵损失的解释</title>
+      <link href="/2019/10/27/introduction-to-CE-loss/"/>
+      <url>/2019/10/27/introduction-to-CE-loss/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>交叉熵损失函数是分类问题里面一个非常常用的函数，本文就其物理意义进行两方面解读，一是从<strong>信息论</strong>的角度，另一个是从<strong>概率密度估计</strong>的角度来讲。</p><a id="more"></a><h1 id="信息论的角度"><a href="#信息论的角度" class="headerlink" title="信息论的角度"></a>信息论的角度</h1><blockquote><p>在我本科的学习过程中，给我印象最深的理论要数<strong>傅里叶变换</strong>和<strong>香农信息论</strong>了，傅里叶变换让我们从另一个角度观察和理解世界，颠覆了我对信号和系统的认识。信息论让我对信息的解析和传递产生了极大的兴趣，因此我十分佩服傅里叶和香农（以上是题外话，哈哈）。</p></blockquote><p>好了，言归正传，在解释各种物理意义之前，让我们回顾一下信息论中的几个重要概念：</p><ol><li><p><strong>信息量</strong>：所谓的信息量，是一种度量信息多少的指标，是衡量一件事情所含有不确定度大小的指标。如果一件事情发生的概率越大，我们认为其所含有的信息越少；反之，则认为其信息量越大。一个经典的例子就是预测天气的例子：如果天气预报告诉我们明天有9成的可能下雨，那么我们很大程度上都会准备一把雨伞，因为明天下雨这件事的不确定度很小，因此其信息量就很小；如果天气预报告诉我们明天有5成下雨，相对于刚才的9成，显然我们更加不确定到底明天下不下雨，其不确定度大了一些，因此其所含有的信息量更大一些。<br>从上面的例子我们可以看出信息量和一件事情发生的概率是成反比的，信息论中定义如下:<br>$$I(x) = -\log_2{(p(x))}$$ 其中$x \in X$是离散型随机变量$X$的一个取值，$p(x)$是随机变量$X$的概率分布。当log底取2时信息量单位为比特。</p></li><li><p><strong>信息熵</strong>：信息熵的定义是信息量的期望：<br>$$H(p) = -\sum p(x)\log(p(x))$$  如果$x$表示信源发出的信号，那么信息熵就可以表示信源所有可能发生情况的平均不确定性。</p></li><li><p><strong>交叉熵</strong>：一个通俗的解释是交叉熵表示两个概率分布之间的差异性信息。我们定义$p(x)$表示随机变量$X$的真实分布，$q(x)$表示其非真实分布，则交叉熵定义如下：<br>$$H(p, q) = -\sum p(x)log(q(x))$$</p></li></ol><blockquote><p>在知乎上看到一个特别好玩的解释[2]，让我们跟着<a href="https://www.zhihu.com/people/pwlin/activities" target="_blank" rel="noopener">CyberRep</a>在知乎上的回答[2]来理解一下上述概念，进而引申出交叉熵的一种理解姿势（下面的一些图直接copy过来了）。</p></blockquote><hr><p><strong>假设现在有一个猜小球颜色的游戏，规则如下：</strong><br>小明犯了错误，爸爸和小明玩猜小球颜色的游戏，箱子里有四种颜色的球，爸爸从箱子中拿出任意一个小球，小明猜球的颜色，爸爸可以回答小明任何问题，每猜一次，不管对错，小明就要接受一次惩罚，当然，猜对，游戏停止，否则继续猜。当然，当答案只剩下两种选择时，此次猜测结束后，无论猜对猜错都能100%确定答案，无需再猜一次，此时游戏停止。(我们可以看出，小明为了尽可能少的接受惩罚，需要用最低的代价猜对爸爸手里球的颜色，这里的代价就是次数)</p><p><strong>题目一: 爸爸拿来一个箱子，跟小明说：里面有橙、紫、蓝及青四种颜色的小球任意个，各颜色小球的占比不清楚，现在我从中拿出一个小球，你猜我手中的小球是什么颜色？</strong></p><p>猜测过程如下：<br><img src="https://upload-images.jianshu.io/upload_images/14250358-ae22f37c2d644103.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="题目一"><br>在这种情况下，小明什么信息都不知道，只能认为四种颜色的小球出现的概率是一样的。所以，根据策略1，1/4概率是橙色球，小明需要猜两次，1/4是紫色球，小明需要猜两次，其余的小球类似，所以小明预期的猜球次数为：$$\frac{1}{4} \times 2 + \frac{1}{4} \times 2 + \frac{1}{4} \times 2 + \frac{1}{4} \times 2 =2$$</p><blockquote><p>分析：这种情况下，小明不知道任何先验信息，因此他假设小球颜色服从的概率分布为$p(x=\text{任意颜色})=1/4$, 所以根据<strong>信息熵</strong>的定义$$H(p)=-\sum p(x)log_2p(x) = -\sum1/4 \times log_2{1/4} = 2$$</p></blockquote><p><strong>题目2：爸爸还是拿来一个箱子，跟小明说：箱子里面有小球任意个，但其中1/2是橙色球，1/4是紫色球，1/8是蓝色球及1/8是青色球。我从中拿出一个球，你猜我手中的球是什么颜色的？</strong><br><img src="http://upload-images.jianshu.io/upload_images/14250358-b52c7360cb6f2ec7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="题目二:case 1"></p><p><strong>case 1:</strong>在这种情况下，小明知道了每种颜色小球的比例，比如橙色占比二分之一，如果我猜橙色，很有可能第一次就猜中了。所以，根据策略2，1/2的概率是橙色球，小明需要猜一次，1/4的概率是紫色球，小明需要猜两次，1/8的概率是蓝色球，小明需要猜三次，1/8的概率是青色球，小明需要猜三次，所以小明猜题次数的期望为：<br>$$\frac{1}{2}\times 1 + \frac{1}{4}\times 2 + \frac{1}{8}\times 3 + \frac{1}{8}\times 3 = 1.75$$</p><blockquote><p>分析：这种情况下，小明知道了小球颜色的概率分布，因此直接根据真实的概率分布计算<strong>信息熵</strong>如下：<br>$$H(p) = -\sum p(x)log_2p(x) = -(\frac{1}{2}\times log_2 \frac{1}{2} + \frac{1}{4}\times log_2 \frac{1}{4} + \frac{1}{8}\times log_2\frac{1}{8}+\frac{1}{8}\times \frac{1}{8}) = 1.75$$</p></blockquote><p><strong>case 2:</strong>然而，现实生活中小明没有那么聪明。爸爸已经告诉小明这些小球的真实分布是$(1/2, 1/4, 1/8, 1/8)$，但小明所选择的策略却认为所有的小球出现的概率相同，相当于忽略了爸爸告诉小明关于箱子中各小球的真实分布，而仍旧认为所有小球出现的概率是一样的，认为小球的分布为$(1/4, 1/4, 1/4, 1/4)$，这个分布就是非真实分布。此时，小明猜中任何一种颜色的小球都需要猜两次，即<br>$$\frac{1}{2}\times 2 + \frac{1}{4}\times 2 + \frac{1}{8}\times  2 + \frac{1}{8}\times 2 = 2$$</p><blockquote><p>分析：显然，使用这种方案将猜中的平均次数从1.75次提升到了两次，因此这不是一个最佳的策略。显然根据真实的概率分布可以使付出的代价达到最小，也就是<strong>信息熵</strong>最，但是实际中不是每个人都可以知道真是概率的分布，因此，当使用非最优策略来消除系统不确定性时，引入了一个<strong>交叉熵</strong>的概念。好了，至此我们可以使用交叉熵的定义来确定一下使用这种策略所需要的代价：<br>$$H(p,q)=-\sum p(x)log_2 q(x)=\frac{1}{2}\times log_2 \frac{1}{4} + \frac{1}{4}\times log_2 \frac{1}{4} + \frac{1}{8}\times  log_2 \frac{1}{4} + \frac{1}{8}\times log_2 \frac{1}{4} = 2$$</p></blockquote><p><strong>题目3:其实，爸爸只想让小明意识到自己的错误，并不是真的想罚他，所以拿来一个箱子，跟小明说：里面的球都是橙色，现在我从中拿出一个，你猜我手中的球是什么颜色？</strong></p><p>这种情况下，小明一次就可以猜对，因为里面只有橙色球。</p><blockquote><p>分析：这种情况下的概率分布就是一个值，即$p(x=橙色)=1$，所以其信息熵表示如下：<br>$$H(p) = 1\times log_2 1=0$$ 也就是说，其信息熵为零，没什么不确定的信息在这个概率分布中。</p></blockquote><blockquote><p>总结：从上面的例子我们可以看出，<strong>交叉熵可以用来衡量在给定的真实分布下，使用非真实分布所指定的策略消除系统的不确定性所需要付出的努力的大小。</strong> 因此，交叉熵越低，这个策略就越好，最低的交叉熵也就是使用了真实分布所计算出来的信息熵，因为<strong>此时的交叉熵等于信息熵</strong>。这也是为什么在机器学习中的分类算法中，我们总是最小化交叉熵，因为交叉熵越低，就证明由算法所产生的策略最接近最优策略，也间接证明我们算法所算出的非真实分布越接近真实分布。</p></blockquote><hr><blockquote><p>扩展<strong>[1]</strong>: Moreover, since the cross-entropy can be written in terms of entropy and the Kullback-Leibler divergence as $H(p,q) = H(p) + D_{KL}(p||q)$, and the entropy of the delta function $p$ is zero, this is also equivalent to minimizing the <strong>KL divergence</strong> between the two distributions (a measure of distance). <strong>In other words, the cross-entropy objective wants the predicted distribution to have all of its mass on the correct answer.</strong></p></blockquote><h1 id="概率密度估计的角度"><a href="#概率密度估计的角度" class="headerlink" title="概率密度估计的角度"></a>概率密度估计的角度</h1><p>这块不翻译了，很简单[1]。</p><blockquote><p>In the probabilistic interpretation, we are therefore minimizing the negative log likelihood of the correct class, which can be interpreted as performing Maximum Likelihood Estimation (MLE). A nice feature of this view is that we can now also interpret the regularization term R(W) in the full loss function as coming from a Gaussian prior over the weight matrix W, where instead of MLE we are performing the Maximum a posteriori (MAP) estimation. </p></blockquote><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol><li><a href="https://cs231n.github.io/linear-classify/" target="_blank" rel="noopener">cs231n_linear-classify</a></li><li><a href="https://www.zhihu.com/question/41252833" target="_blank" rel="noopener">如何通俗的解释交叉熵与相对熵?</a></li><li><a href="http://www.cnblogs.com/raorao1994/p/8872073.html" target="_blank" rel="noopener">交叉熵-损失函数</a></li><li><a href="https://ljvmiranda921.github.io/notebook/2017/08/13/softmax-and-the-negative-log-likelihood/" target="_blank" rel="noopener">Understanding softmax and the negative log-likelihood</a></li><li>吴军，数学之美，人民邮电出版社</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> machine learning </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> deep learning </tag>
+            
+            <tag> machine learning </tag>
+            
+            <tag> loss function </tag>
             
         </tags>
       
@@ -629,9 +710,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> pattern recognition </tag>
+            
+            <tag> python </tag>
             
             <tag> machine learning </tag>
             
@@ -660,11 +741,11 @@
       
         <tags>
             
+            <tag> cad </tag>
+            
             <tag> image processing </tag>
             
             <tag> pattern recognition </tag>
-            
-            <tag> cad </tag>
             
         </tags>
       

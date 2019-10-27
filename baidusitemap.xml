@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://xuyangcao.github.io/2019/10/27/pandas-dataframe-application/</loc>
+    <lastmod>2019-10-27</lastmod>
+  </url>  <url>
+    <loc>https://xuyangcao.github.io/2019/10/27/connetted-conponents-tools/</loc>
+    <lastmod>2019-10-27</lastmod>
+  </url>  <url>
     <loc>https://xuyangcao.github.io/2019/10/27/pytorch-tools/</loc>
     <lastmod>2019-10-27</lastmod>
   </url>  <url>
     <loc>https://xuyangcao.github.io/2019/10/27/python-run-code-with-probability/</loc>
+    <lastmod>2019-10-27</lastmod>
+  </url>  <url>
+    <loc>https://xuyangcao.github.io/2019/10/27/introduction-to-CE-loss/</loc>
     <lastmod>2019-10-27</lastmod>
   </url>  <url>
     <loc>https://xuyangcao.github.io/2019/10/27/machine-learning-measurement/</loc>
@@ -58,25 +67,25 @@
     <loc>https://xuyangcao.github.io/2018/03/02/pytorch-data-loading-and-processing/</loc>
     <lastmod>2018-12-03</lastmod>
   </url>  <url>
-    <loc>https://xuyangcao.github.io/2018/02/19/python-future/</loc>
+    <loc>https://xuyangcao.github.io/2018/10/13/python-model-and-package/</loc>
     <lastmod>2018-12-03</lastmod>
   </url>  <url>
     <loc>https://xuyangcao.github.io/2018/11/03/python-exception/</loc>
     <lastmod>2018-12-03</lastmod>
   </url>  <url>
-    <loc>https://xuyangcao.github.io/2018/06/25/opencv-%E8%8E%B7%E5%8F%96%E5%9B%BE%E5%83%8F%E6%9C%80%E5%A4%A7%E8%BF%9E%E9%80%9A%E5%9F%9F/</loc>
-    <lastmod>2018-12-03</lastmod>
-  </url>  <url>
-    <loc>https://xuyangcao.github.io/2018/10/13/python-model-and-package/</loc>
+    <loc>https://xuyangcao.github.io/2018/03/01/python-arguments/</loc>
     <lastmod>2018-12-03</lastmod>
   </url>  <url>
     <loc>https://xuyangcao.github.io/2018/02/19/python-argparse/</loc>
     <lastmod>2018-12-03</lastmod>
   </url>  <url>
-    <loc>https://xuyangcao.github.io/2018/03/01/python-arguments/</loc>
+    <loc>https://xuyangcao.github.io/2018/06/25/opencv-%E8%8E%B7%E5%8F%96%E5%9B%BE%E5%83%8F%E6%9C%80%E5%A4%A7%E8%BF%9E%E9%80%9A%E5%9F%9F/</loc>
     <lastmod>2018-12-03</lastmod>
   </url>  <url>
     <loc>https://xuyangcao.github.io/2018/06/25/mfc%E9%81%8D%E5%8E%86%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6/</loc>
+    <lastmod>2018-12-03</lastmod>
+  </url>  <url>
+    <loc>https://xuyangcao.github.io/2018/02/19/python-future/</loc>
     <lastmod>2018-12-03</lastmod>
   </url>  <url>
     <loc>https://xuyangcao.github.io/2018/03/07/machine-learning-python-implementation-of-fuzzy-c-means/</loc>
@@ -88,10 +97,10 @@
     <loc>https://xuyangcao.github.io/2018/06/27/kernel-density-estimation/</loc>
     <lastmod>2018-12-03</lastmod>
   </url>  <url>
-    <loc>https://xuyangcao.github.io/2018/06/28/daheng-camera/</loc>
+    <loc>https://xuyangcao.github.io/2018/11/06/dice-loss/</loc>
     <lastmod>2018-12-03</lastmod>
   </url>  <url>
-    <loc>https://xuyangcao.github.io/2018/11/06/dice-loss/</loc>
+    <loc>https://xuyangcao.github.io/2018/06/28/daheng-camera/</loc>
     <lastmod>2018-12-03</lastmod>
   </url>  <url>
     <loc>https://xuyangcao.github.io/2018/02/26/convolution-arithmetic/</loc>

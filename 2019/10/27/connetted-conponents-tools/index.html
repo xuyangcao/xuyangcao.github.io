@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+<meta name="google-site-verification" content="9xB3ICVJ53-XQqOI5rqeAH7UHVdhlnrG_0OcvFHZQIo" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":true},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="注：本文大部分内容来源于网络，尤其是原理部分图片全部非本人所作 简介之前在CSDN上介绍过一个关于如何使用skimage以及opencv标记二值图像的连通域问题。实际上估计不是太多的人懂得标记连通域的原理，加上在医学图像处理中，我们常常用到3维图像，而上述工具只解决了2维图像上的情况，并不支持3维图像的标记(目前还不支持)，因此有必要对这个连通域标记算法进行进一步说明。 本文主要介绍两点，一是介绍">
+<meta name="keywords" content="image processing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像的连通域标记算法及工具介绍">
+<meta property="og:url" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2019&#x2F;10&#x2F;27&#x2F;connetted-conponents-tools&#x2F;index.html">
+<meta property="og:site_name" content="newxuyangcao">
+<meta property="og:description" content="注：本文大部分内容来源于网络，尤其是原理部分图片全部非本人所作 简介之前在CSDN上介绍过一个关于如何使用skimage以及opencv标记二值图像的连通域问题。实际上估计不是太多的人懂得标记连通域的原理，加上在医学图像处理中，我们常常用到3维图像，而上述工具只解决了2维图像上的情况，并不支持3维图像的标记(目前还不支持)，因此有必要对这个连通域标记算法进行进一步说明。 本文主要介绍两点，一是介绍">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-66249154cff0c0ad.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-4325c1b40465163a.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;200">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-675a017dd636f3f7.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-f258cb3bd42e8a30.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-110dbb1dec29253a.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-ad3a483cb1a452b1.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-35a8f562ae8a1e2f.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-1fc5090f04d44916.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-30650ad53da05ea6.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-0970912f222e0265.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-913b5b400675b680.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-03f1b0b00621bfe0.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-5cb6be2c4414cd28.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-795e625d99298aa6.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-0375272356c7d5f2.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-ba81e9f31d2827c3.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+<meta property="og:updated_time" content="2019-10-27T02:52:16.494Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;14250358-66249154cff0c0ad.jpg?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1240">
+
+<link rel="canonical" href="https://xuyangcao.github.io/2019/10/27/connetted-conponents-tools/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>图像的连通域标记算法及工具介绍 | newxuyangcao</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">newxuyangcao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives<span class="badge">36</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories<span class="badge">10</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags<span class="badge">28</span></a>
+
+  </li>
+        <li class="menu-item menu-item-cv">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>CV</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/xuyangcao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://xuyangcao.github.io/2019/10/27/connetted-conponents-tools/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar2.gif">
+      <meta itemprop="name" content="Xuyang Cao">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="newxuyangcao">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          图像的连通域标记算法及工具介绍
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-10-27 10:50:46 / Modified: 10:52:16" itemprop="dateCreated datePublished" datetime="2019-10-27T10:50:46+08:00">2019-10-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/image-processing/" itemprop="url" rel="index">
+                    <span itemprop="name">image processing</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><em>注：本文大部分内容来源于<a href="http://aishack.in/tutorials/labelling-connected-components-example/" target="_blank" rel="noopener">网络</a>，尤其是原理部分图片全部非本人所作</em></p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>之前在<a href="https://blog.csdn.net/xuyangcao123/article/details/81023732" target="_blank" rel="noopener">CSDN</a>上介绍过一个关于如何使用skimage以及opencv标记二值图像的连通域问题。实际上估计不是太多的人懂得标记连通域的原理，加上在医学图像处理中，我们常常用到3维图像，而上述工具只解决了2维图像上的情况，并不支持3维图像的标记(目前还不支持)，因此有必要对这个连通域标记算法进行进一步说明。</p>
+<p>本文主要介绍两点，一是<strong>介绍一种连通域标记的算法</strong>，中文翻译过来我给它叫两阶段法(two pass); 另一个方面在2维连通域标记的基础上<strong>介绍一个新的高效的3维连通域标记工具</strong>。</p>
+<p>通过这个简单的原理，相信读者可以根据需求自己去写一个更高效的连通域标记算法。</p>
+<a id="more"></a>
+
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>如图1所示，对于一个二值图像，其前景为1，背景为0，我们希望给其相连的前景部分标记为同一个label，不同的连通域标记为不同的label，我们希望得到的最终结果如图2所示(我是真的不知道简书该怎么并排显示图像…)。<br><img src="https://upload-images.jianshu.io/upload_images/14250358-66249154cff0c0ad.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图1 简单示例"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14250358-4325c1b40465163a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/200" alt="图2 连通域标记最终结果"></p>
+<p>一种标记连通域的方法叫两阶段法，也就是说，通过遍历两次图像上的点就可以完成标记工作，下面我们主要看看它是怎么工作的。</p>
+<h2 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h2><p>从图3开始，我们从图像的左上角点遍历整个图像。对于第一个黄点(0,0)，我们检查它的上边和左边有没有已经标记好的label，显然没有，因此给其标记为<code>1</code>. 如图3.<br><img src="https://upload-images.jianshu.io/upload_images/14250358-675a017dd636f3f7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图3 label-step1"><br>接下来看第二个像素(0, 1), 继续检查它的左边和上边是否有标记好的像素，由于它左边的一个像素已经标记为<code>1</code>， 因此第二个像素也标记为<code>1</code>. 由于第三个像素(0, 2)是一个背景点，因此直接跳过。再看第4个像素(0, 3)，由于其左边是背景，因此认为其左边没有标记，同时上边也没有标记，因此需要给它一个新的label，<code>2</code>. 如图4.<br><img src="https://upload-images.jianshu.io/upload_images/14250358-f258cb3bd42e8a30.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图4 label-step2"><br>接下来同理，直到第一行的最后一个像素，我们有了三个标记。如图5.<br><img src="https://upload-images.jianshu.io/upload_images/14250358-110dbb1dec29253a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图5 label-step3"><br>第二行同理，我们看到目前为止还没有出现什么意外，只要检查一个像素的左边和上边是否有标记，如果有，就给它打上同样的标记即可。如图6.<br><img src="https://upload-images.jianshu.io/upload_images/14250358-ad3a483cb1a452b1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图6 label-step4"><br>到了第三行的第四个元素(2, 3)，我们发现了一个意外情况，就是该像素的上边有了一个label <code>2</code>，而它的左边同样也有一个label <code>1</code>，这怎么办呢？ 这种情况下，我们给该像素标记为两个label中较小的那个，也就是<code>1</code>，同时还要有另一个操作，就是让label <code>2</code>隶属于 label <code>1</code>，如图7.<br><img src="https://upload-images.jianshu.io/upload_images/14250358-35a8f562ae8a1e2f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图7 label-step5"></p>
+<p>有了上述处理矛盾的情况，我们就可以继续往下标记了。始终坚持以下原则：</p>
+<ul>
+<li>如果遇上一个背景点，直接跳过，不做处理。</li>
+<li>如果对于一个像素点，其上面和左边都没有标记好的label，那么就从小到达给它一个新的label。</li>
+<li>如果对于一个像素点，其上面或者/并且左边已经有了标记好的label，且label不冲突，那就把这个像素也标记成同样的label</li>
+<li>如果对于一个像素，其上面和左边都有了label，且两个label冲突了，那么就把该像素标记为较小的那个label，同时记住较大的label隶属于较小的label。</li>
+</ul>
+<p>遵循上述原则可以得到图8-12的结果：<br><img src="https://upload-images.jianshu.io/upload_images/14250358-1fc5090f04d44916.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图8 label-step6"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14250358-30650ad53da05ea6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图9 label-step7"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14250358-0970912f222e0265.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图10 label-step8"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14250358-913b5b400675b680.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图11 label-step9"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14250358-03f1b0b00621bfe0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图12 label-step10"><br>至此我们标记完了图像上的每一个像素，并给他们赋了一个值，唯一的问题在于有些连通域我们看着是一个，但是却给了它两个label，但是好在我们知道他们label的继承关系，因此第二遍就是把具有继承关系的部分给合并成为一个。</p>
+<h2 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h2><p>依然从左上角点开始遍历，每遍历一个label，都要查查该像素是否具有继承关系。比如第一个像素(0, 0),由于它是<code>1</code>，发现了它有继承关系，但是好在他是父label，因此不用管他；当到了第三个像素(0, 2)，是个背景，不需要管它，直接跳过，也不用查继承关系；当到了第四个像素，查到了label  <code>2</code> 具有继承关系，且label <code>2</code> 隶属于label <code>1</code>， 不好意思，我们就不要label <code>2</code>了，直接把它改为label <code>1</code>，后面的以此类推。图13-16都遵循上述原则。<br><img src="https://upload-images.jianshu.io/upload_images/14250358-5cb6be2c4414cd28.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图13 label-step11"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14250358-795e625d99298aa6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图14 label-step12"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14250358-0375272356c7d5f2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图15 label-step13"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14250358-ba81e9f31d2827c3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图16 label-step14"><br>至此，我们第二次遍历完了整个图像，同时也把所有的连通域标记完了。</p>
+<p>至此，我们大概了解了两阶段法标记连通域的基本原理，希望能够对读者有所帮助。</p>
+<h1 id="工具介绍"><a href="#工具介绍" class="headerlink" title="工具介绍"></a>工具介绍</h1><p>这方面的工具很多，我自己常用的有这么3个：一个是scikit image, 一个是opencv3，这两个工具目前只支持2维图像的连通域标记。还有一个是github上的一个开源工具，比较高效的完成了3维图像的连通域标记，也是近期发现的，感谢作者吧，哈哈。</p>
+<ol>
+<li>skimage的连通域标记算法<br><a href="http://scikit-image.org/docs/dev/api/skimage.measure.html#skimage.measure.label" target="_blank" rel="noopener">skimage.messure.label</a></li>
+<li>opencv3的连通域标记算法<br><a href="https://docs.opencv.org/3.1.0/d3/dc0/group__imgproc__shape.html#gac2718a64ade63475425558aa669a943a" target="_blank" rel="noopener">connectedComponents</a></li>
+<li>一个高效的3d连通域标记算法<br><a href="https://github.com/seung-lab/connected-components-3d" target="_blank" rel="noopener">connected-components-3d</a></li>
+</ol>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://github.com/seung-lab/connected-components-3d" target="_blank" rel="noopener">1. github-connected-components-3d</a><br><a href="http://aishack.in/tutorials/labelling-connected-components-example/" target="_blank" rel="noopener">2. Connected Component Labelling</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/image-processing/" rel="tag"><i class="fa fa-tag"></i> image processing</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/10/27/pytorch-tools/" rel="next" title="pytorch工具">
+                  <i class="fa fa-chevron-left"></i> pytorch工具
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/10/27/pandas-dataframe-application/" rel="prev" title="pandas DataFrame数据画图并通过matplotlib保存">
+                  pandas DataFrame数据画图并通过matplotlib保存 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一阶段"><span class="nav-number">2.1.</span> <span class="nav-text">第一阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二阶段"><span class="nav-number">2.2.</span> <span class="nav-text">第二阶段</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工具介绍"><span class="nav-number">3.</span> <span class="nav-text">工具介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Xuyang Cao"
+    src="/images/avatar2.gif">
+  <p class="site-author-name" itemprop="name">Xuyang Cao</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xuyangcao" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;xuyangcao" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:newxuyangcao@gmail.com" title="E-Mail &amp;rarr; mailto:newxuyangcao@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+      <script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=591hhldj5nm&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"></script>
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xuyang cao</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '2f344fe951fe8b9e96c4',
+      clientSecret: '0ba5131ed36da8ed9d05d37580d7ccf01607360f',
+      repo: 'xuyangcao.github.io',
+      owner: 'xuyangcao',
+      admin: ['xuyangcao'],
+      id: 'db76fd227892b132599a49b30a1c2e6f',
+        language: '',
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
+
+</body>
+</html>
