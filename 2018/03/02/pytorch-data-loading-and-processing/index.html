@@ -51,18 +51,18 @@
   };
 </script>
 
-  <meta name="description" content="简介结合官方tutorials和源码以及部分博客写出此文。">
+  <meta name="description" content="# 简介  结合官方tutorials和源码以及部分博客写出此文。">
 <meta name="keywords" content="deep learning,pytorch,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pytorch: 数据加载和处理">
 <meta property="og:url" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;03&#x2F;02&#x2F;pytorch-data-loading-and-processing&#x2F;index.html">
 <meta property="og:site_name" content="newxuyangcao">
-<meta property="og:description" content="简介结合官方tutorials和源码以及部分博客写出此文。">
+<meta property="og:description" content="# 简介  结合官方tutorials和源码以及部分博客写出此文。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;03&#x2F;02&#x2F;pytorch-data-loading-and-processing&#x2F;tree.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;03&#x2F;02&#x2F;pytorch-data-loading-and-processing&#x2F;method2_tree.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;03&#x2F;02&#x2F;pytorch-data-loading-and-processing&#x2F;result.png">
-<meta property="og:updated_time" content="2018-12-03T15:44:15.414Z">
+<meta property="og:updated_time" content="2019-10-27T03:25:39.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;03&#x2F;02&#x2F;pytorch-data-loading-and-processing&#x2F;tree.png">
 
@@ -254,7 +254,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-12-03 23:44:15" itemprop="dateModified" datetime="2018-12-03T23:44:15+08:00">2018-12-03</time>
+                <time title="Modified: 2019-10-27 11:25:39" itemprop="dateModified" datetime="2019-10-27T11:25:39+08:00">2019-10-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -279,7 +279,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>结合<a href="http://pytorch.org/tutorials/beginner/data_loading_tutorial.html#sphx-glr-beginner-data-loading-tutorial-py" target="_blank" rel="noopener">官方tutorials</a>和<a href="https://github.com/pytorch" target="_blank" rel="noopener">源码</a>以及部分博客写出此文。</p>
+        <meta name="referrer" content="no-referrer" />
+# 简介
+
+<p>结合<a href="http://pytorch.org/tutorials/beginner/data_loading_tutorial.html#sphx-glr-beginner-data-loading-tutorial-py" target="_blank" rel="noopener">官方tutorials</a>和<a href="https://github.com/pytorch" target="_blank" rel="noopener">源码</a>以及部分博客写出此文。</p>
 <a id="more"></a>
 
 <p><code>pytorch</code>的数据加载和处理相对容易的多，常见的两种形式的导入：</p>
@@ -396,7 +399,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一种"><span class="nav-number">2.</span> <span class="nav-text">第一种</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dataset-class"><span class="nav-number">2.1.</span> <span class="nav-text">Dataset class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transforms-amp-Compose-transforms"><span class="nav-number">2.2.</span> <span class="nav-text">Transforms &amp; Compose transforms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterating-through-the-dataset"><span class="nav-number">2.3.</span> <span class="nav-text">Iterating through the dataset</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二种"><span class="nav-number">3.</span> <span class="nav-text">第二种</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#torchvision"><span class="nav-number">3.1.</span> <span class="nav-text">torchvision</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附录"><span class="nav-number">4.</span> <span class="nav-text">附录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一种"><span class="nav-number">1.</span> <span class="nav-text">第一种</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dataset-class"><span class="nav-number">1.1.</span> <span class="nav-text">Dataset class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transforms-amp-Compose-transforms"><span class="nav-number">1.2.</span> <span class="nav-text">Transforms &amp; Compose transforms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterating-through-the-dataset"><span class="nav-number">1.3.</span> <span class="nav-text">Iterating through the dataset</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二种"><span class="nav-number">2.</span> <span class="nav-text">第二种</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#torchvision"><span class="nav-number">2.1.</span> <span class="nav-text">torchvision</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附录"><span class="nav-number">3.</span> <span class="nav-text">附录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -59,7 +59,7 @@
 <meta property="og:site_name" content="newxuyangcao">
 <meta property="og:description" content="需求这里想把数据组合到pandas的dataframe中，然后画一个条形图，通过matplotlib保存下来。 代码">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-27T02:56:24.619Z">
+<meta property="og:updated_time" content="2019-10-27T03:26:02.977Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://xuyangcao.github.io/2019/10/27/pandas-dataframe-application/">
@@ -244,7 +244,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2019-10-27 10:54:21 / Modified: 10:56:24" itemprop="dateCreated datePublished" datetime="2019-10-27T10:54:21+08:00">2019-10-27</time>
+              <time title="Created: 2019-10-27 10:54:21 / Modified: 11:26:02" itemprop="dateCreated datePublished" datetime="2019-10-27T10:54:21+08:00">2019-10-27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,7 +269,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>这里想把数据组合到pandas的dataframe中，然后画一个条形图，通过matplotlib保存下来。</p>
+        <meta name="referrer" content="no-referrer" />
+
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>这里想把数据组合到pandas的dataframe中，然后画一个条形图，通过matplotlib保存下来。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><a id="more"></a>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#3.2 bar</span></span><br><span class="line"><span class="keyword">if</span> pre_path1 <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">    index = [filename[:<span class="number">-4</span>] <span class="keyword">for</span> filename <span class="keyword">in</span> file_names]</span><br><span class="line">    fig = plt.figure() <span class="comment"># create a figure</span></span><br><span class="line">    fig.suptitle(<span class="string">'dice and haus in test-set'</span>)</span><br><span class="line"></span><br><span class="line">    ax1 = fig.add_subplot(<span class="number">121</span>) <span class="comment"># add an axis</span></span><br><span class="line">    ax1.set_title(<span class="string">'dice'</span>)</span><br><span class="line">    dice_info = &#123;pre_path:dice_list, pre_path1:dice_list1&#125;</span><br><span class="line">    df = pd.DataFrame(dice_info, index=index)</span><br><span class="line">    df.plot(ax=ax1, kind=<span class="string">'bar'</span>) <span class="comment"># plot data into axis</span></span><br><span class="line"></span><br><span class="line">    ax2 = fig.add_subplot(<span class="number">122</span>)</span><br><span class="line">    ax2.set_title(<span class="string">'haus'</span>)</span><br><span class="line">    haus_info = &#123;pre_path:haus_list, pre_path1:haus_list1&#125;</span><br><span class="line">    df = pd.DataFrame(haus_info, index=index)</span><br><span class="line">    df.plot(ax=ax2, kind=<span class="string">'bar'</span>)</span><br><span class="line"></span><br><span class="line">    plt.tight_layout()</span><br><span class="line">    fig.savefig(args.save_path[:<span class="number">-3</span>]+<span class="string">'_bar.png'</span>)</span><br></pre></td></tr></table></figure>

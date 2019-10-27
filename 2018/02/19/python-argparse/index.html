@@ -51,15 +51,15 @@
   };
 </script>
 
-  <meta name="description" content="简介当遇到需要参数的情况时，往往有以下三种处理方法[1]:直接给定    这种方法实现起来方便，但是灵活性稍差，每次都需要打开源码修改。手动解析    这种方法也算是比较常用，但是当参数过多时就显示出来不方便了，因为每次输入的格式以及参数的个数都必须一点不差。举个简单的小例子说明这种方法如何使用：    1234567# python 代码-手动解析参数# 文件名称test.pyimport sy">
+  <meta name="description" content="简介当遇到需要参数的情况时，往往有以下三种处理方法[1]:直接给定    这种方法实现起来方便，但是灵活性稍差，每次都需要打开源码修改。手动解析    这种方法也算是比较常用，但是当参数过多时就显示出来不方便了，因为每次输入的格式以及参数的个数都必须一点不差。举个简单的小例子说明这种方法如何使用：    1234567# python 代码-手动解析参数# 文件名称test.pyimport">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="learning python: argparse 模块">
 <meta property="og:url" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;02&#x2F;19&#x2F;python-argparse&#x2F;index.html">
 <meta property="og:site_name" content="newxuyangcao">
-<meta property="og:description" content="简介当遇到需要参数的情况时，往往有以下三种处理方法[1]:直接给定    这种方法实现起来方便，但是灵活性稍差，每次都需要打开源码修改。手动解析    这种方法也算是比较常用，但是当参数过多时就显示出来不方便了，因为每次输入的格式以及参数的个数都必须一点不差。举个简单的小例子说明这种方法如何使用：    1234567# python 代码-手动解析参数# 文件名称test.pyimport sy">
+<meta property="og:description" content="简介当遇到需要参数的情况时，往往有以下三种处理方法[1]:直接给定    这种方法实现起来方便，但是灵活性稍差，每次都需要打开源码修改。手动解析    这种方法也算是比较常用，但是当参数过多时就显示出来不方便了，因为每次输入的格式以及参数的个数都必须一点不差。举个简单的小例子说明这种方法如何使用：    1234567# python 代码-手动解析参数# 文件名称test.pyimport">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-03T15:44:15.410Z">
+<meta property="og:updated_time" content="2019-10-27T03:26:00.281Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://xuyangcao.github.io/2018/02/19/python-argparse/">
@@ -250,7 +250,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-12-03 23:44:15" itemprop="dateModified" datetime="2018-12-03T23:44:15+08:00">2018-12-03</time>
+                <time title="Modified: 2019-10-27 11:26:00" itemprop="dateModified" datetime="2019-10-27T11:26:00+08:00">2019-10-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -275,7 +275,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>当遇到需要参数的情况时，往往有以下<em>三种</em>处理方法[1]:<br><strong>直接给定</strong><br>    这种方法实现起来方便，但是灵活性稍差，每次都需要打开源码修改。<br><strong>手动解析</strong><br>    这种方法也算是比较常用，但是当参数过多时就显示出来不方便了，因为每次输入的格式以及参数的个数都必须一点不差。举个简单的小例子说明这种方法如何使用：<br>    <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># python 代码-手动解析参数</span></span><br><span class="line"><span class="comment"># 文件名称test.py</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">print</span> sys.argv[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"end"</span></span><br></pre></td></tr></table></figure><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$python</span> test.py 1 </span><br><span class="line">test.py </span><br><span class="line">end</span><br></pre></td></tr></table></figure><br><strong>自动解析</strong><br>    相比上述两种方法，这种自动解析的方法更加灵活，且参数可以选择，顺序可以不确定，因此建议使用这种方法。其主要依赖python包<a href="https://docs.python.org/3.4/library/argparse.html#module-argparse" target="_blank" rel="noopener">argparse</a>。</p>
+        <meta name="referrer" content="no-referrer" />
+
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>当遇到需要参数的情况时，往往有以下<em>三种</em>处理方法[1]:<br><strong>直接给定</strong><br>    这种方法实现起来方便，但是灵活性稍差，每次都需要打开源码修改。<br><strong>手动解析</strong><br>    这种方法也算是比较常用，但是当参数过多时就显示出来不方便了，因为每次输入的格式以及参数的个数都必须一点不差。举个简单的小例子说明这种方法如何使用：<br>    <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># python 代码-手动解析参数</span></span><br><span class="line"><span class="comment"># 文件名称test.py</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">print</span> sys.argv[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"end"</span></span><br></pre></td></tr></table></figure><br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$python</span> test.py 1 </span><br><span class="line">test.py </span><br><span class="line">end</span><br></pre></td></tr></table></figure><br><strong>自动解析</strong><br>    相比上述两种方法，这种自动解析的方法更加灵活，且参数可以选择，顺序可以不确定，因此建议使用这种方法。其主要依赖python包<a href="https://docs.python.org/3.4/library/argparse.html#module-argparse" target="_blank" rel="noopener">argparse</a>。</p>
 <a id="more"></a>
 
 <hr>

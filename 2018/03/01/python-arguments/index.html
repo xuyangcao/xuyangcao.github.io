@@ -51,15 +51,15 @@
   };
 </script>
 
-  <meta name="description" content="Argument Matching Basics Positionals: matched from left to right Keywords: matched by argument name Defaults: specify values for optional arguments that aren’t passed Varargs collecting: collect arbit">
+  <meta name="description" content="# Argument Matching Basics   Positionals: matched from left to right Keywords: matched by argument name Defaults: specify values for optional arguments that aren’t passed Varargs collecting: collect">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="learning python: arguments(参数)">
 <meta property="og:url" content="https:&#x2F;&#x2F;xuyangcao.github.io&#x2F;2018&#x2F;03&#x2F;01&#x2F;python-arguments&#x2F;index.html">
 <meta property="og:site_name" content="newxuyangcao">
-<meta property="og:description" content="Argument Matching Basics Positionals: matched from left to right Keywords: matched by argument name Defaults: specify values for optional arguments that aren’t passed Varargs collecting: collect arbit">
+<meta property="og:description" content="# Argument Matching Basics   Positionals: matched from left to right Keywords: matched by argument name Defaults: specify values for optional arguments that aren’t passed Varargs collecting: collect">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-03T15:44:15.410Z">
+<meta property="og:updated_time" content="2019-10-27T03:25:57.769Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://xuyangcao.github.io/2018/03/01/python-arguments/">
@@ -250,7 +250,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2018-12-03 23:44:15" itemprop="dateModified" datetime="2018-12-03T23:44:15+08:00">2018-12-03</time>
+                <time title="Modified: 2019-10-27 11:25:57" itemprop="dateModified" datetime="2019-10-27T11:25:57+08:00">2019-10-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -275,7 +275,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Argument-Matching-Basics"><a href="#Argument-Matching-Basics" class="headerlink" title="Argument Matching Basics"></a>Argument Matching Basics</h1><ol>
+        <meta name="referrer" content="no-referrer" />
+# Argument Matching Basics
+
+<ol>
 <li><strong>Positionals</strong>: matched from left to right</li>
 <li><strong>Keywords</strong>: matched by argument name</li>
 <li><strong>Defaults</strong>: specify values for optional arguments that aren’t passed</li>
@@ -450,7 +453,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Argument-Matching-Basics"><span class="nav-number">1.</span> <span class="nav-text">Argument Matching Basics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Argument-Matching-Syntax"><span class="nav-number">2.</span> <span class="nav-text">Argument Matching Syntax</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Gritty-Details"><span class="nav-number">3.</span> <span class="nav-text">The Gritty Details</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Keyword-and-Default-Examples"><span class="nav-number">3.1.</span> <span class="nav-text">Keyword and Default Examples</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Keywords"><span class="nav-number">3.1.1.</span> <span class="nav-text">Keywords</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Defaults"><span class="nav-number">3.1.2.</span> <span class="nav-text">Defaults</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Combining-Keywords-and-Defaults"><span class="nav-number">3.1.3.</span> <span class="nav-text">Combining Keywords and Defaults</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arbitrary-Arguments-Examples"><span class="nav-number">3.2.</span> <span class="nav-text">Arbitrary Arguments Examples</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Headers-Collecting-arguments"><span class="nav-number">3.2.1.</span> <span class="nav-text">Headers: Collecting arguments</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Calls-Unpacking-arguments"><span class="nav-number">3.2.2.</span> <span class="nav-text">Calls: Unpacking arguments</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Argument-Matching-Syntax"><span class="nav-number">1.</span> <span class="nav-text">Argument Matching Syntax</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Gritty-Details"><span class="nav-number">2.</span> <span class="nav-text">The Gritty Details</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Keyword-and-Default-Examples"><span class="nav-number">2.1.</span> <span class="nav-text">Keyword and Default Examples</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Keywords"><span class="nav-number">2.1.1.</span> <span class="nav-text">Keywords</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Defaults"><span class="nav-number">2.1.2.</span> <span class="nav-text">Defaults</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Combining-Keywords-and-Defaults"><span class="nav-number">2.1.3.</span> <span class="nav-text">Combining Keywords and Defaults</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arbitrary-Arguments-Examples"><span class="nav-number">2.2.</span> <span class="nav-text">Arbitrary Arguments Examples</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Headers-Collecting-arguments"><span class="nav-number">2.2.1.</span> <span class="nav-text">Headers: Collecting arguments</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Calls-Unpacking-arguments"><span class="nav-number">2.2.2.</span> <span class="nav-text">Calls: Unpacking arguments</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
