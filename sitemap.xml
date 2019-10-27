@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xuyangcao.github.io/about/index.html</loc>
+    
+    <lastmod>2019-10-27T03:37:45.318Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xuyangcao.github.io/2019/10/27/connetted-conponents-tools/</loc>
     
     <lastmod>2019-10-27T03:26:43.097Z</lastmod>
@@ -278,13 +285,6 @@
     <loc>https://xuyangcao.github.io/lib/three/README.html</loc>
     
     <lastmod>2019-10-24T18:41:43.852Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xuyangcao.github.io/about/index.html</loc>
-    
-    <lastmod>2019-10-24T16:13:18.332Z</lastmod>
     
   </url>
   
