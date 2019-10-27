@@ -319,7 +319,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2019-10-27 10:50:46 / Modified: 10:52:16" itemprop="dateCreated datePublished" datetime="2019-10-27T10:50:46+08:00">2019-10-27</time>
+              <time title="Created: 2019-10-27 10:50:46 / Modified: 11:20:43" itemprop="dateCreated datePublished" datetime="2019-10-27T10:50:46+08:00">2019-10-27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -344,7 +344,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><em>注：本文大部分内容来源于<a href="http://aishack.in/tutorials/labelling-connected-components-example/" target="_blank" rel="noopener">网络</a>，尤其是原理部分图片全部非本人所作</em></p>
+          <meta name="referrer" content="no-referrer" />
+
+<p><em>注：本文大部分内容来源于<a href="http://aishack.in/tutorials/labelling-connected-components-example/" target="_blank" rel="noopener">网络</a>，尤其是原理部分图片全部非本人所作</em></p>
 <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>之前在<a href="https://blog.csdn.net/xuyangcao123/article/details/81023732" target="_blank" rel="noopener">CSDN</a>上介绍过一个关于如何使用skimage以及opencv标记二值图像的连通域问题。实际上估计不是太多的人懂得标记连通域的原理，加上在医学图像处理中，我们常常用到3维图像，而上述工具只解决了2维图像上的情况，并不支持3维图像的标记(目前还不支持)，因此有必要对这个连通域标记算法进行进一步说明。</p>
 <p>本文主要介绍两点，一是<strong>介绍一种连通域标记的算法</strong>，中文翻译过来我给它叫两阶段法(two pass); 另一个方面在2维连通域标记的基础上<strong>介绍一个新的高效的3维连通域标记工具</strong>。</p>
 <p>通过这个简单的原理，相信读者可以根据需求自己去写一个更高效的连通域标记算法。</p>
