@@ -1,365 +1,867 @@
-<html>
-
-
-<!-- Head -->
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<link rel="shortcut icon" href="myIcon.ico">
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<link rel="stylesheet" href="jemdoc.css" type="text/css">
-<title>Xuyang Cao</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" href="jemdoc.css" type="text/css">
+    <style>
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            justify-content: flex-end;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #f6f6f6;
+            border: 1px solid #dddddd;
+            color: #527bbd;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .tab.active {
+            background-color: #ffffff;
+            border-bottom: 1px solid #ffffff;
+            color: #022b6d;
+            font-weight: bold;
+        }
+        .content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .content.show {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+    <title>Xuyang Cao</title>
+
 </head>
 
 <body>
 <div id="layout-content" style="margin-top:25px">
 
-<!-- Basic Information -->
-<table>
-	<tbody>
-		<tr>
-			<td width="670">
-				<div id="toptitle">					
-					<h1>Xuyang Cao</h1>
-				</div>
+<div class="tabs">
+    <div class="tab active" onclick="switchLanguage('en')">English</div>
+    <div class="tab" onclick="switchLanguage('zh')">中文</div>
+</div>
 
-				<h3> Senior Engineer, Ph.D.</h3>
-				<p>
-					JD.com, China<br>
-					No. 18 Kechuang 11 Street, Tongzhou District, Beijing<br>
-					#A JD Building<br>
-					<br>
-					<table>
-						<tr>
-							<td>Email: </td>
-							<td>caoxuyang [at] bjtu [dot] edu [dot] cn</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>newxuyangcao [at] gmail [dot] com</td>
-						</tr>
-					</table>
-				</p>
-				<p>
-					<a href="https://github.com/xuyangcao/" target="_blank" rel="noopener noreferrer"><img src="./icons/github.jpg" height="30px" style="margin-bottom:-3px" title="github"></a>
-					<!-- <a href="https://www.linkedin.com/in/newxuyangcao/" target="_blank" rel="noopener noreferrer"><img src="./icons/LinkedIn.png" height="30px" style="margin-bottom:-3px" title="LinkedIn"></a> -->
-					<a href="https://blog.csdn.net/xuyangcao123" target="_blank" rel="noopener noreferrer"><img src="./icons/csdn.png" height="30px" style="margin-bottom:-3px; margin-left: 3px" title="CSDN blog"></a>
-				</p>
-			</td>
-			<td>
-				<!-- <img src="./images/xuyangcao.png" border="1" width="150"><br> -->
-				<img src="./images/xuyangcao2.png" border="1" width="300"><br>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<!-- cv_zh -->
+<div id="zh" class="content show">
+    <!-- Head -->
+    <head>
+        <link rel="shortcut icon" href="myIcon.ico">
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <link rel="stylesheet" href="jemdoc.css" type="text/css">
+        <title>Xuyang Cao</title>
+    </head>
 
+    <body>
+    <div id="layout-content" style="margin-top:25px">
 
-<!-- Biography -->
-<h2>Biography</h2>
-<p>
-	Dr. Xuyang Cao is a senior engineer at JD.com. His research interests include machine learning, computer vision, and artificial intelligence. 
-	Specially, his research mainly focuses on image segmentation, image super-resolution, semi-supervised learning, medical image analysis, etc.
-</p>
-<p>
-	Before joining JD.com, he obtained his Ph.D degree in <a href="http://en.bjtu.edu.cn" target="_blank">Beijing Jiaotong University</a> in April 2022, supervised by professor 
-	<a href="http://faculty.bjtu.edu.cn/eaie/115.html" target="_blank" rel="noopener noreferrer">Houjin Chen</a> and professor 
-	<a href="http://faculty.bjtu.edu.cn/eaie/8788.html" target="_blank" rel="noopener noreferrer">Yanfen Li</a>. He also worked closely with 
-	professor <a href="http://faculty.bjtu.edu.cn/eaie/8647.html" target="_blank" rel="noopener noreferrer">Yahui Peng</a>. 
-</p>
+    <!-- Basic Information -->
+    <table>
+        <tbody>
+        <tr>
+            <td width="670">
+                <div id="toptitle">
+                    <h1>曹 旭阳</h1>
+                </div>
 
+                <h3>博士，算法工程师，党员</h3>
+                <p>
+                    京东, 北京, 中国<br>
+                    北京市通州区科技十一街18号<br>
+                    京东总部C座<br>
+                    <br>
+                    <table>
+                        <tr>
+                            <td>Email: </td>
+                            <td>newxuyangcao [at] gmail [dot] com</td>
+                        </tr>
+                    </table>
+                </p>
+                <p>
+                    <a href="https://github.com/xuyangcao/" target="_blank" rel="noopener noreferrer"><img src="./icons/github.jpg" height="30px" style="margin-bottom:-3px" title="github"></a>
+                    <a href="https://blog.csdn.net/xuyangcao123" target="_blank" rel="noopener noreferrer"><img src="./icons/csdn.png" height="30px" style="margin-bottom:-3px; margin-left: 3px" title="CSDN blog"></a>
+                </p>
+            </td>
+            <td>
+                <img src="./images/xuyangcao4.png" border="1" width="350"><br>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
-<!-- Education -->
-<h2>Education</h2>
-<table>
-<tbody>
-	<tr>
-		<td width="100px" style='text-align: right'>2017-2022</td>
-		<td width='20px'></td>
-		<td> <b>Ph.D</b>, &nbsp; <i>School of Electronic and Information Engineering, &nbsp; Beijing Jiaotong University</i>  </td>
-	</tr>
-	<tr>
-		<td width="100px" style="text-align:right">2016-2017 </td>
-		<td width='20px'></td>
-		<td> <b>Master Candidate</b>, &nbsp; <i>School of Electronic and Information Engineering, &nbsp; Beijing Jiaotong University</i> </td>
-	</tr>
-	<tr>
-		<td width="100px" style="text-align:right">2012-2016 </td>
-		<td width='20px'></td>
-		<td> <b>Bachelor of Engineering</b>, &nbsp; <i>School of Electronic and Information Engineering, &nbsp; Beijing Jiaotong University</i></td>
-	</tr>
-</tbody>
-</table>
+    <!-- Biography -->
+    <h2> 个人简介 </h2>
+    <p>
+        我目前是一名算法工程师，就职于京东集团-京东健康，主要研究领域为AIGC和多模态方向。近1年时间主要研究多模态深度学习算法，其中以语音驱动的低成本数字人/宠物生成技术探索和应用为主。
+    </p>
+    <p>
+        我从2016年开始从事计算机视觉、图像处理和模式识别相关研究工作。本硕博毕业于<a href="http://en.bjtu.edu.cn" target="_blank">北京交通大学</a>，博士期间主要研究方向为语义分割和半监督学习，导师为<a href="http://faculty.bjtu.edu.cn/eaie/115.html" target="_blank" rel="noopener noreferrer">陈后金</a>教授和<a href="http://faculty.bjtu.edu.cn/eaie/8788.html" target="_blank" rel="noopener noreferrer">李艳凤</a>教授，同时我在读博期间和<a href="http://faculty.bjtu.edu.cn/eaie/8647.html" target="_blank" rel="noopener noreferrer">彭亚辉</a>教授具有紧密合作。
+    </p>
 
+    <!-- Education -->
+    <h2>教育背景</h2>
 
-<!-- Projects -->
-<h2>Projects</h2>
-<table>
-<tbody>
-	<tr>
-		<td width='100px' valign="top" style="text-align:right"> 2019-2022</td>
-		<td width='20px'></td>
-		<td>
-			<b> Research on Deep Learning based Breast Mass (Ultrasound) and Lung Mass (MRI) Segmentation </b>, &nbsp;<i>The National Natural 
-				Science Fund, &nbsp; Participant</i>
-			<br>
-			<ul style="font-size: 98%">
-				<li> Research on deep learning based semantic segmentation algorithms on breast ultrasound images as well as lung MRI images. </li>
-				<li> Dig deep into semantic segmentation algorithms, such as fully supervised learning, semi-supervised learning, neural network architecture search, etc. </li>
-				<li>
-					Proposed lightweight dilated densely connected network for 3D breast rumor segmentation. The performance improved over 5% compared with classical segmentation networks, while network parameters were over 20 times smaller than classical networks.
-				</li>
-				<li>
-					Designed an uncertainty-aware temporal-ensembling model for semi-supervised segmentation. The performance of semi-supervised method is able to achieve 94.4% of that in supervised segmentation with only 1.1% labeled data.
-				</li>
-				<li>
-					Suggested an NAS-based 3D medical image segmentation framework, and achieved an improvement of 4.2% compared with the state-of-art human-designed segmentation network.
-				</li>
-				<li> Related journal and conference papers have been published. </li>
-			</ul>
-		</td>
-	</tr>
-	<tr>
-		<td width='100px' valign="top" style="text-align:right"> 2017-2018</td>
-		<td width='20px'></td>
-		<td>
-			<b>High Speed Train Gear Defect Detection Based on Computer Vision</b>, &nbsp; <i>Horizontal Scientific Research Project, &nbsp; Participant</i>
-			<br>
-			<ul style="font-size: 98%">
-				<li> Provide solution for detection and quantitative analysis of surface pitting in high-speed train gears, such as getting defect status of gear tooth surface, reporting statistic results, etc.</li>
-				<li> Developed novel detection and segmentation algorithms as well as software platform.  </li>
-				<li> Related patents, journal and conference papers have been published. </li>
-			</ul>
-		</td>
-	</tr>
-	<tr>
-		<td width='100px' valign="top" style="text-align:right"> 2016-2017</td>
-		<td width='20px'></td>
-		<td>
-			<b>Geometric Parameters Measurement of an Overhead Line System</b>, &nbsp; <i>Participant</i>
-			<br>
-			<ul style="font-size: 98%">
-				<li> Provide solution for measuring the geometric parameters of an overhead line system using scale factors and frame differences.  </li>
-				<li> I was responsible for the previous algorithm simulation and participated in the hardware structure design work.  </li>
-				<li> Related patents have been granted. </li>
-			</ul>
-		</td>
-	</tr>
-</tbody>
-</table>
+    <table style="width:100%; table-layout:fixed;">
+    <tbody>
+    <tr>
+        <td style="text-align:left;"><b>博士</b>, &nbsp;<i>电子与信息工程学院, &nbsp; 北京交通大学</i> &nbsp; | &nbsp; 国家公派留学奖学金，年度学科top 3%博士论文 </td>
+        <td width='100px' style="text-align:right;">2017-2022</td>
+    </tr>
+    <tr>
+        <td style="text-align:left;"><b>硕士</b>, &nbsp;<i>电子与信息工程学院, &nbsp; 北京交通大学</i> &nbsp; | &nbsp; 硕博连读硕士阶段 </td>
+        <td width='100px' style="text-align:right;">2016-2017</td>
+    </tr>
+    <tr>
+        <td style="text-align:left;"><b>学士</b>, &nbsp;<i>电子与信息工程学院, &nbsp; 北京交通大学</i> &nbsp; | &nbsp; 大学生创新项目国家级，学生会副主席，优秀团员</td>
+        <td width='100px' style="text-align:right;">2012-2016</td>
+    </tr>
+    </tbody>
+    </table>
+
+    <!-- Work -->
+    <h2>工作经历</h2>
+
+    <table style="width:100%; table-layout:fixed;">
+        <tbody>
+        <tr>
+            <td style="text-align:left; width:30%;"><b>算法工程师</b>, &nbsp; 京东集团-京东健康 &nbsp; | &nbsp; </td>
+            <td style="text-align:left;"> 博士管培生, 2022年度经开区亦城优秀人才, 2023年度最佳员工-燃燃之星, 2024年度最佳员工-技术之星  </td>
+            <td width='100px' style="text-align:right;">2022.07-至今</td>
+        </tr>
+        </tbody>
+    </table>
 
 
+    <!-- Projects -->
+    <h2>项目经历</h2>
 
-<!-- Publications -->
-<h2> Publications </h2>
-<table>
-	<tbody>
-		<!-- 2022 -->
-		<tr>
-			<td width='100px' valign="top" style="text-align:right"> 2022 </td>
-			<td width='20px'></td>
-			<td>
-				<b>X. Cao</b>, H. Chen, Y. Li, Y. Peng, Y. Zhou, L. Cheng, <a href="http://cobweb.cs.uga.edu/~tliu/" target="_blank">T. Liu</a>, <a href="https://bme.shanghaitech.edu.cn/bme_en/2021/0205/c8252a85165/page.htm" target="_blank">D. Shen</a>. Auto-DenseUnet: Searchable Neural Network Architecture for Tumor Segmentation in 3D Automated Breast Ultrasound. <i>Medical Image Analysis</i>, 2022, 82: 102589.
-				<!-- <br> -->
-				[<a href="https://doi.org/10.1016/j.media.2022.102589" target="_blank">paper</a>]
-				<p></p>
-			</td>
-		</tr>
-		<tr>
-			<td width='100px' valign="top" style="text-align:right"> </td>
-			<td width='20px'></td>
-			<td>
-				Y. Zhou, H. Chen, Y. Li, <b>X. Cao</b>, S. Wang, D. Shen. Cross-Model Attention-Guided Tumor Segmentation for 3D Automated Breast Ultrasound (ABUS) Images. <i>IEEE Journal of Biomedical and Health Informatics</i>, 2022, 26(1): 301-311.
-				<!-- <br> -->
-				[<a href="https://ieeexplore.ieee.org/document/9435079/" target="_blank">paper</a>]			
-				<p></p>
-			</td>
-		</tr>
-		<!-- 2021 -->
-		<tr>
-			<td width='100px' valign="top" style="text-align:right"> 2021</td>
-			<td width='20px'></td>
-			<td>
-				<b>X. Cao</b>, H. Chen, Y. Li, Y. Peng, S. Wang, L. Cheng. Uncertainty Aware Temporal-Ensembling Model for Semi-supervised ABUS Mass Segmentation. <i>IEEE Transactions on Medical Imaging</i>, 2021, 40(1):431-443.
-				<!-- <br> -->
-				[<a href="https://ieeexplore.ieee.org/document/9214845" target="_blank">paper</a>]
-				<p></p>
-			</td>
-		</tr>
-		<tr>
-			<td width='100px' valign="top" style="text-align:right"> </td>
-			<td width='20px'></td>
-			<td>
-				<b>X. Cao</b>, H. Chen, Y. Li, Y. Peng, S. Wang, L. Cheng. Dilated Densely Connected U-Net with Uncertainty Focus Loss for 3D ABUS Mass Segmentation. <i>Computer Methods and Programs in Biomedicine</i>, 2021, 209: 106313.
-				<!-- <br> -->
-				[<a href="https://doi.org/10.1016/j.cmpb.2021.106313" target="_blank">paper</a>] 
-				<p></p>
-			</td>
-		</tr>
-		<tr>
-			<td width='100px' valign="top" style="text-align:right"> </td>
-			<td width='20px'></td>
-			<td>
-				J. Li, H. Chen, Y. Li, Y. Peng, N. Cai, <b>X. Cao</b>. AMRSegNet: Adaptive Modality Recalibration Network for Lung Tumor Segmentation on Multi-Modal MR Images. <i>Multimedia Tools and Applications</i>, 2021, 80: 33779–33797.
-				<!-- <br> -->
-				[<a href="https://doi.org/10.1007/s11042-021-11225-z" target="_blank">paper</a>] 
-				<p></p>
-			</td>
-		</tr>
-		<!-- 2020 -->
-		<tr>
-			<td width='100px' valign="top" style="text-align:right"> 2020 </td>
-			<td width='20px'></td>
-			<td>
-				<b>X. Cao</b>, H. Chen, Y. Li, Y. Peng, Y. Zhou, L. Cheng. Boundary Loss with Non-Euclidean Distance Constraint for ABUS Mass Segmentation. <i>2020 CISP-BMEI</i>, Chengdu, China, 2020, pp: 645-650. 
-				<!-- <br> -->
-				[<a href="https://ieeexplore.ieee.org/document/9263676" target="_blank">paper</a>] 
-				<p></p>
-			</td>
-		</tr>
-		<!-- 2019 -->
-		<tr>
-			<td width='100px' valign="top" style="text-align:right">2019</td>
-			<td width='20px'></td>
-			<td>
-				Y. Peng, <b>X. Cao</b>, H. Chen, Y. Li, J. Li, X. Wang. Preliminary Study on Noise and Artifact Reduction in Phase-Contrast CT Image of 
-				Tristructural-Isotropic Coated Fuel Particle (in Chinese). <i>Acta Electronica Sinica</i>, 2019, 47(2): 448-453.
-				<!-- <br> -->
-				[<a href="http://www.ejournal.org.cn/CN/abstract/abstract11236.shtml" target="_blank">paper</a>] 
-				<p></p>
-			</td>
-		</tr>
-		<!-- 2018 -->
-		<tr>
-			<td width='100px' valign="top" style="text-align:right"> 2018</td>
-			<td width='20px'></td>
-			<td>
-				C. Wang, F. Li, Y. Li, H. Chen and <b>X. Cao</b>. A Defect Status Detecting Method for External Gear in Railway. 
+    <table style="width:100%; table-layout:fixed;">
+        <tbody>
+        <tr>
+            <td style="text-align:left;">
+                <b>数字人+LLM技术和应用创新项目</b>
+            </td>
+            <td width='10px'></td>
+            <td width='140px' valign="top" style="text-align:right;">2024.01-2025.01</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align:left; vertical-align: top;">
+                <ul>
+                    <li>以核心研发角色推动京东健康数字人技术从0到1建设，探索数字人技术在泛健康领域的技术和应用创新。</li>
+                    <li>负责从技术调研、数据集收集&构建、到模型设计&训练、业务应用的全流程设计。</li>
+                    <li>积累了2.5T+数据，研发了3类数字人生成模型，包括基于GAN的双塔模型、基于diffusion的端到端生成模型、基于diffusion和解耦人脸表征的实时生成模型；设计了2套数字人生成框架，分别用于离线和在线场景。</li>
+                    <li>在医疗知识科普、对话、宠物换装等5+个场景成功应用；年度商业化收入250万+，累计服务用户23万+。</li>
+                    <li>完成2项新技术论文和代码开源 [<a href="https://github.com/jdh-algo/JoyVASA" target="_blank" rel="noopener noreferrer">JoyVASA</a> , <a href="https://github.com/jdh-algo/JoyHallo" target="_blank" rel="noopener noreferrer">JoyHallo</a>]，Github Stars累计1000+。</li>
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="text-align:left;">
+                <b>脑科学项目-脑机接口(BCI)-基于脑影像的脑疾病诊断</b>
+            </td>
+            <td width='10px'></td>
+            <td width='140px' valign="top" style="text-align:right;">2023.02-2024.01</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align:left; vertical-align: top;">
+                <ul>
+                    <li>作为核心研究人员推动京东健康脑科学研究从0到1建设，包括基于BCI的卒中肢体运功障碍康复研究，和基于脑影像的阿尔兹海默病（AD）和双向情感障碍（BD）疾病识别。</li>
+                    <li>主导私有化脑电和脑影像数据采集、脑电数据采集平台搭建、神经解码算法设计、和对外合作等。</li>
+                    <li>完成4500+例数据的私有和公开脑影像数据集、超40小时的运动想象脑电数据，完成5篇论文和2篇专利的撰写/投稿，脑电识别和脑影像等多项研究达到行业SOTA水平；</li>
+                    <li>以参与单位成功申报科技部国家重点研发计划1项（老年人虚拟现实认知康复训练系统）；推动京东健康成为脑机接口产业联盟成员单位。</li>
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="text-align:left;">
+                <b>基于深度学习的乳腺肿块（超声）和肺部肿块（MRI）语义分割研究</b>
+            </td>
+            <td width='10px'></td>
+            <td width='140px' valign="top" style="text-align:right;">2018.09-2022.04</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align:left; vertical-align: top;">
+                <ul>
+                    <li>研究基于深度学习的语义分割算法，应用于乳腺超声图像及肺部MRI图像。</li>
+                    <li>深入研究语义分割算法，如全监督学习、半监督学习、神经网络架构搜索等。</li>
+                    <li>提出了轻量级膨胀密集连接网络用于三维乳腺肿瘤分割。相比经典分割网络，性能提高了5%，而网络参数减少了超过20倍。</li>
+                    <li>设计了不确定性感知的时间集成模型用于半监督分割。仅使用1.1%标注数据的情况下，半监督方法的性能达到了监督分割方法的94.4%。</li>
+                    <li>提出了一种NAS为基础的三维医学图像分割框架，并比最先进的手动设计分割网络提升了4.2%的表现。</li>
+                    <li>以第一作者发表了4篇高水平论文，包括2篇top期刊，总影响因子30+。</li>
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="text-align:left;">
+                <b>基于计算机视觉的高速列车齿轮缺陷检测</b>
+            </td>
+            <td width='10px'></td>
+            <td width='140px' valign="top" style="text-align:right;">2018.09-2022.04</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align:left; vertical-align: top;">
+                <ul>
+                    <li>作为核心开发人员，基于计算机视觉技术，研发动车组联轴节齿轮表面点蚀坑自动检测及定量分析解决方案。</li>
+                    <li>通过获取联轴节齿面图像，结合图像识别算法对齿轮点蚀情况进行统计、报表，并对超限齿轮发出警报。</li>
+                    <li>负责齿面图像磨损区域检测及分割算法的研发、windows平台软件系统的设计与实现。</li>
+                    <li>3分钟内可完成内外齿轮104个齿面1mm以上的缺陷检测；发表了相关论文及专利。</li>
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="text-align:left;">
+                <b>基于计算机视觉的接触网系统的几何参数测量</b>
+            </td>
+            <td width='10px'></td>
+            <td width='140px' valign="top" style="text-align:right;">2018.09-2022.04</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align:left; vertical-align: top;">
+                <ul>
+                    <li>利用尺度因子和帧差法提供接触网系统几何参数测量方案。</li>
+                    <li>负责前期算法仿真并参与硬件结构设计工作。</li>
+                    <li>完成2项相关专利。</li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Publications -->
+    <h2> 发表论文 </h2>
+    <table>
+        <tbody>
+        <!-- 2015 -->
+        <tr>
+            <td style="text-align:left">
+                G. Wang, <b>X. Cao</b>, S. An, F. Fan, C. Zhang, J. Wang, F. Yu, Z. Wang. Multi-Dimension-Embedding-Aware Modality Fusion Transformer for Psychiatric Disorder Classification, <i>ICIGP</i>, 2025.
+                [<a href="https://arxiv.org/abs/2310.02690" target="_blank">paper</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right"> 2022 </td> -->
+        </tr>
+
+        <!-- 2024 -->
+        <tr>
+            <td style="text-align:left">
+                <b>X. Cao</b>, G Wang, S Shi, J Zhao, Y Yao, J Fei, M Gao. JoyVASA: Portrait and Animal Image Animation with Diffusion-Based Audio-Driven Facial Dynamics and Head Motion Generation. <i>Arxiv</i>, 2024.
+                [<a href="https://arxiv.org/abs/2411.09209" target="_blank">paper</a>] [<a href="https://github.com/jdh-algo/JoyVASA" target="_blank">code</a>][<a href="https://jdh-algo.github.io/JoyVASA/" target="_blank">project</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right"> 2022 </td> -->
+        </tr>
+        <tr>
+            <td style="text-align:left">
+                S. Shi, <b>X. Cao</b>, J. Zhao, G. Wang. JoyHallo: Digital human model for Mandarin. <i>Arxiv</i>, 2024.
+                [<a href="https://arxiv.org/abs/2409.13268" target="_blank">technical report</a>] [<a href="https://github.com/jdh-algo/JoyHallo" target="_blank">code</a>][<a href="https://jdh-algo.github.io/JoyHallo/" target="_blank">project</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right"> 2022 </td> -->
+        </tr>
+        <tr>
+            <td style="text-align:left">
+                Z. Gao, Y. Guo, G. Wang, X. Chen, <b>X. Cao</b>, C. Zhang, S. An, F. Xu. Robust deep learning from incomplete annotation for accurate lung nodule detection. <i>Computers in Biology and Medicine</i>, 2024, 173:108361.
+                [<a href="https://www.sciencedirect.com/science/article/abs/pii/S00104825240044518" target="_blank">paper</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right"> 2022 </td> -->
+        </tr>
+
+        <!-- 2022 -->
+        <tr>
+            <td style="text-align:left">
+                <b>X. Cao</b>, H. Chen, Y. Li, Y. Peng, Y. Zhou, L. Cheng, <a href="http://cobweb.cs.uga.edu/~tliu/" target="_blank">T. Liu</a>, <a href="https://bme.shanghaitech.edu.cn/bme_en/2021/0205/c8252a85165/page.htm" target="_blank">D. Shen</a>. Auto-DenseUnet: Searchable Neural Network Architecture for Tumor Segmentation in 3D Automated Breast Ultrasound. <i>Medical Image Analysis</i>, 2022, 82: 102589.
+                [<a href="https://doi.org/10.1016/j.media.2022.102589" target="_blank">paper</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right"> 2022 </td> -->
+        </tr>
+        <tr>
+            <td style="text-align:left">
+                Y. Zhou, H. Chen, Y. Li, <b>X. Cao</b>, S. Wang, D. Shen. Cross-Model Attention-Guided Tumor Segmentation for 3D Automated Breast Ultrasound (ABUS) Images. <i>IEEE Journal of Biomedical and Health Informatics</i>, 2022, 26(1): 301-311.
+                [<a href="https://ieeexplore.ieee.org/document/9435079/" target="_blank">paper</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td>
+            <td width='100px' valign="top" style="text-align:right"> </td> -->
+        </tr>
+        <!-- 2021 -->
+        <tr>
+            <td style="text-align:left">
+                <b>X. Cao</b>, H. Chen, Y. Li, Y. Peng, S. Wang, L. Cheng. Uncertainty Aware Temporal-Ensembling Model for Semi-supervised ABUS Mass Segmentation. <i>IEEE Transactions on Medical Imaging</i>, 2021, 40(1):431-443.
+                [<a href="https://ieeexplore.ieee.org/document/9214845" target="_blank">paper</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right"> 2021</td> -->
+        </tr>
+        <tr>
+            <td style="text-align:left">
+                <b>X. Cao</b>, H. Chen, Y. Li, Y. Peng, S. Wang, L. Cheng. Dilated Densely Connected U-Net with Uncertainty Focus Loss for 3D ABUS Mass Segmentation. <i>Computer Methods and Programs in Biomedicine</i>, 2021, 209: 106313.
+                [<a href="https://doi.org/10.1016/j.cmpb.2021.106313" target="_blank">paper</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td>
+            <td width='100px' valign="top" style="text-align:right"> </td> -->
+        </tr>
+        <tr>
+            <td style="text-align:left">
+                J. Li, H. Chen, Y. Li, Y. Peng, N. Cai, <b>X. Cao</b>. AMRSegNet: Adaptive Modality Recalibration Network for Lung Tumor Segmentation on Multi-Modal MR Images. <i>Multimedia Tools and Applications</i>, 2021, 80: 33779–33797.
+                [<a href="https://doi.org/10.1007/s11042-021-11225-z" target="_blank">paper</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td>
+            <td width='100px' valign="top" style="text-align:right"> </td> -->
+        </tr>
+        <!-- 2020 -->
+        <tr>
+            <td style="text-align:left">
+                <b>X. Cao</b>, H. Chen, Y. Li, Y. Peng, Y. Zhou, L. Cheng. Boundary Loss with Non-Euclidean Distance Constraint for ABUS Mass Segmentation. <i>2020 CISP-BMEI</i>, Chengdu, China, 2020, pp: 645-650. 
+                <!-- <br> -->
+                [<a href="https://ieeexplore.ieee.org/document/9263676" target="_blank">paper</a>] 
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right"> 2020 </td> -->
+        </tr>
+        <!-- 2019 -->
+        <tr>
+            <td style="text-align:left">
+                Y. Peng, <b>X. Cao</b>, H. Chen, Y. Li, J. Li, X. Wang. Preliminary Study on Noise and Artifact Reduction in Phase-Contrast CT Image of Tristructural-Isotropic Coated Fuel Particle (in Chinese). <i>Acta Electronica Sinica</i>, 2019, 47(2): 448-453.
+                [<a href="http://www.ejournal.org.cn/CN/abstract/abstract11236.shtml" target="_blank">paper</a>]
+                <p></p>
+            </td>
+            <td width='10px'></td>
+            <!-- <td width='100px' valign="top" style="text-align:right">2019</td> -->
+        </tr>
+        <!-- 2018 -->
+        <tr>
+            <td style="text-align:left">
+                C. Wang, F. Li, Y. Li, H. Chen and <b>X. Cao</b>. A Defect Status Detecting Method for External Gear in Railway. 
 				<i>2018 IEEE 3rd International Conference on Image, Vision and Computing (ICIVC)</i>,  Chongqing, 2018, pp: 123-127.
-				<!-- <br> -->
-				[<a href="https://ieeexplore.ieee.org/document/8492899" target="_blank">paper</a>] 
+                [<a href="https://ieeexplore.ieee.org/document/8492899" target="_blank">paper</a>] 
 				<p></p>
-			</td>
-		</tr>
+            </td>
+            <!-- [<a href="https://ieeexplore.ieee.org/document/8492899" target="_blank">paper</a>]  -->
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right"> 2018</td> -->
+        </tr>
 		<tr>
-			<td width='100px' valign="top" style="text-align:right"></td>
-			<td width='20px'></td>
-			<td>
+			<td style="text-align:left">
 				Y. Li, <b>X. Cao</b>, H. Chen, L. Zhang, N. Yang. Defect Status Detection Method Based on Machine Vision for External Gear in Train (in Chinese). 
 				<i>Journal of The China Railway Society</i>, 2018, 40(12):33-41.
 				<!-- <br> -->
 				[<a href="http://tdxb.bosihw.cn/Magazine/Show.aspx?Id=42136" target="_blank">paper</a>] 
 				<p></p>
 			</td>
+            <!-- <td width='10px'></td>
+            <td width='100px' valign="top" style="text-align:right"></td> -->
 		</tr>
 		<!-- 2017 -->
 		<tr>
-			<td width='100px' valign="top" style="text-align:right">2017</td>
-			<td width='20px'></td>
-			<td>
+            <!-- <td style="text-align:left; width: 5px;">[1].</td> -->
+			<td style="text-align:left">
 				J. Wei, <b>X. Cao</b>, H. chen, Y. li. Research on benign and malignant masses classification in mammogram (in Chinese). 
 				<i>Journal of Beijing Jiaotong University</i>, 2017, 41(5): 73-.
 				<!-- <br> -->
 				[<a href="http://jdxb.bjtu.edu.cn/CN/abstract/abstract3224.shtml" target="_blank">paper</a>] 
 			</td>
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right">2017</td> -->
 		</tr>
-	</tbody>
-</table>
+        </tbody>
+    </table>
 
-<!-- Patents -->
-<h2>Patents</h2>
-<table>
-	<tbody>
-		<!-- 2018 -->
+    <!-- Patents -->
+    <h2>专利&书籍</h2>
+    <table>
+        <tbody>
+            <!-- 2018 -->
+            <tr>
+                <td style="text-align:left">
+                    Y. Peng, W. Jiang, Z. Zhu, H. Yang, <b>X. Cao</b>, H. Chen. A method of Measuring the Geometric Parameters 
+                    of an Overhead Line System by using Geometric Magnification and Monocular Vision. China, <i>CN201810182553.1</i>, 2018-11-13.
+                    [<a href="http://www.wanfangdata.com.cn/details/detail.do?_type=patent&id=CN201810182553.1" target="_blank">Link</a>] 
+                    <p></p>
+                </td>
+                <!-- <td width='10px'></td>
+                <td width='100px' valign="top" style="text-align:right">2018</td> -->
+            </tr>
+            <!-- 2017 -->
+            <tr>
+                <td style="text-align:left">
+                    Y. Peng, C. Zhang, B. Zheng, J. Yin, <b>X. Cao</b>, H. Chen. A method and a Device for Measuring the Geometric Parameters 
+                    of an Overhead Line System by using Scale Factors and Frame Differences. China, <i>CN201710464403.5</i>, 2017-06-19.
+                    [<a href="http://www.wanfangdata.com.cn/details/detail.do?_type=patent&id=CN201710464403.5#" target="_blank">Link</a>] 
+                </td>
+                <!-- <td width='10px'></td>
+                <td width='100px' valign="top" style="text-align:right">2017</td> -->
+            </tr>
+            <tr>
+                <td>Y. Zhou, <b>X. Cao</b>. <i>Neural Networks with TensorFlow 2, Apress, 2020.</i> 
+                    &nbsp; [译] [<a href="https://item.jd.com/13127241.html" target="_blank">Link</a>] 
+                    <p></p>
+                </td>
+                <!-- <td width='10px'></td>
+                <td width='100px' valign="top" style="text-align:right">2022</td> -->
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Language -->
+    <h2>个人资质</h2>
+    <table>
+        <tr>
+            <td width='100px' valign="top" style="text-align:right"> 研究兴趣：</td>
+            <td width='5px'></td>
+            <td style="text-align: left;"> AIGC，多模态，图像处理，模式识别，计算机视觉，人工智能</td>
+        </tr>
+        <tr>
+            <td width='50px' valign="top" style="text-align:right"> 语言技能： </td>
+            <td width='5px'></td>
+            <td> 中文：母语 &nbsp;|&nbsp; 英文：熟练（听说读写），雅思7分 </td>
+        </tr>
+        <tr>
+            <td width='50px' valign="top" style="text-align:right"> 计算机技能： </td>
+            <td width='5px'></td>
+            <td> 编程语言：Python, C++ &nbsp;|&nbsp; 计算机视觉：Pytorch，OpenCV &nbsp; | &nbsp; 其他：Linux，Vim，LaTex </td>
+        </tr>
+        <tr>
+            <td width='50px' valign="top" style="text-align:right"> 兴趣爱好： </td>
+            <td width='5px'></td>
+            <td> 个人博客累计阅读量33w+，CSDN博客专家 &nbsp;|&nbsp; 平时喜欢阅读，跑步，旅游 </td>
+        </tr>
+    </table>
+    </div>
+</div>
+
+
+
+<!-- 简历-英文部分 -->
+<div id="en" class="content">
+    <!-- Head -->
+    <head>
+        <link rel="shortcut icon" href="myIcon.ico">
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <link rel="stylesheet" href="jemdoc.css" type="text/css">
+        <title>Xuyang Cao</title>
+    </head>
+
+    <body>
+    <div id="layout-content" style="margin-top:25px">
+
+    <!-- Basic Information -->
+    <table>
+        <tbody>
+        <tr>
+            <td width="670">
+                <div id="toptitle">
+                    <h1>Xuyang Cao</h1>
+                </div>
+
+                <h3>Algorithm Engineer, Ph.D.</h3>
+                <p>
+                    JD.com, Beijing, China<br>
+                    No. 18 Kechuang 11 Street, Tongzhou District, Beijing<br>
+                    #C JD Building<br>
+                    <br>
+                    <table>
+                        <tr>
+                            <td>Email: </td>
+                            <td>newxuyangcao [at] gmail [dot] com</td>
+                        </tr>
+                    </table>
+                </p>
+                <p>
+                    <a href="https://github.com/xuyangcao/" target="_blank" rel="noopener noreferrer"><img src="./icons/github.jpg" height="30px" style="margin-bottom:-3px" title="github"></a>
+                    <a href="https://blog.csdn.net/xuyangcao123" target="_blank" rel="noopener noreferrer"><img src="./icons/csdn.png" height="30px" style="margin-bottom:-3px; margin-left: 3px" title="CSDN blog"></a>
+                </p>
+            </td>
+            <td>
+                <img src="./images/xuyangcao4.png" border="1" width="350"><br>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Biography -->
+    <h2>Biography</h2>
+    <p>
+        Dr. Xuyang Cao is an algorithm engineer at JD Health Inc. in JD.com, specializing in AIGC and multimodal research. Over the past year, his primary focuses has been on multimodal deep learning algorithms, with an emphasis on audio-driven low-cost talking face generation technology exploration and application.
+    </p>
+    <p>
+        Since 2016, He has been engaged in research in computer vision, image processing, and pattern recognition. He completed his undergraduate, master’s, and Ph.D. degrees at <a href="http://en.bjtu.edu.cn" target="_blank">Beijing Jiaotong University</a>. 
+        During his Ph.D., his research focused on semantic segmentation and semi-supervised learning, under the supervision of Professors <a href="http://faculty.bjtu.edu.cn/eaie/115.html" target="_blank" rel="noopener noreferrer">Houjin Chen</a> and <a href="http://faculty.bjtu.edu.cn/eaie/8788.html" target="_blank" rel="noopener noreferrer">Yanfen Li</a>. Additionally, He closely collaborated with Professor<a href="http://faculty.bjtu.edu.cn/eaie/8647.html" target="_blank" rel="noopener noreferrer">Yahui Peng</a> during his doctoral studies.
+    </p>
+
+    <!-- Education -->
+    <h2>Education</h2>
+    <table style="width:100%; table-layout:fixed;">
+        <tbody>
+        <tr>
+            <!-- <td width='20px'></td> -->
+            <td style="text-align:left;"><b>Ph.D</b>, &nbsp;<i>School of Electronic and Information Engineering, &nbsp; Beijing Jiaotong University</i></td>
+            <td width="100px" style='text-align: right'>2017-2022</td>
+        </tr>
+        <tr>
+            
+            <!-- <td width='20px'></td> -->
+            <td style="text-align:left;"><b>Master Candidate</b>, &nbsp;<i>School of Electronic and Information Engineering, &nbsp; Beijing Jiaotong University</i></td>
+            <td width="100px" style="text-align:right">2016-2017 </td>
+        </tr>
+        <tr>
+            
+            <!-- <td width='20px'></td> -->
+            <td style="text-align:left;"><b>Bachelor of Engineering</b>, &nbsp;<i>School of Electronic and Information Engineering, &nbsp; Beijing Jiaotong University</i></td>
+            <td width="100px" style="text-align:right">2012-2016 </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Projects -->
+    <h2>Projects</h2>
+
+    <table style="width:100%; table-layout:fixed;">
+        <tbody>
+        <tr>
+            <td style="text-align:left;">
+                <b>Audio Driven Talking Face + LLM Technology and Application Innovation</b>
+            </td>
+            <td width='10px'></td>
+            <td width='140px' valign="top" style="text-align:right;">2024.01-2025.01</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align:left; vertical-align: top;">
+                <ul>
+                    <li>Led the development of JD Health's digital human technology, driving it from concept to deployment.</li>
+                    <li>Oversaw the entire project lifecycle, including technical research, dataset creation, model design, and business application.</li>
+                    <li>Developed three types of digital human generation models: a GAN-based dual-tower model, a diffusion-based end-to-end model, and a real-time model based on decoupled facial representations.</li>
+                    <li>Successfully applied these models across more than five domains, including medical knowledge dissemination, interactive dialogue, and virtual pet customization, generating over 2.5 million in annual commercial revenue and serving more than 230,000 users.</li>
+                    <li>Published two papers and open-sourced code, garnering over 1,000 stars on GitHub. [<a href="https://github.com/jdh-algo/JoyVASA" target="_blank" rel="noopener noreferrer">JoyVASA</a> , <a href="https://github.com/jdh-algo/JoyHallo" target="_blank" rel="noopener noreferrer">JoyHallo</a>]</li>
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="text-align:left;">
+                <b>The Brain Science Project - Brain-Computer Interface (BCI) - Brain Disease Diagnosis Based on Medical Imaging</b>
+            </td>
+            <td width='10px'></td>
+            <td width='140px' valign="top" style="text-align:right;">2023.02-2024.01</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align:left; vertical-align: top;">
+                <ul>
+                    <li>Served as a key researcher in driving JD Health’s brain science research from concept to execution, focusing on stroke rehabilitation using Brain-Computer Interface (BCI) technology and brain imaging-based diagnosis of Alzheimer’s (AD) and Bipolar Disorder (BD).</li>
+                    <li>Led the development of a proprietary EEG and brain imaging data collection platform, designed neural decoding algorithms, and managed external collaborations.</li>
+                    <li>Processed over 4,500 data samples, including private and public brain imaging datasets and more than 40 hours of motor imagery EEG data. Published five research papers and filed two patents, with multiple studies in EEG recognition and brain imaging achieving state-of-art results.</li>
+                    <li>Contributed to the successful application for a national key R&D project (Virtual Reality Cognitive Rehabilitation Training System for the Elderly) under the Ministry of Science and Technology, and helped JD Health become a member of the Brain-Computer Interface Industry Alliance.</li>
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="text-align:left;">
+                <b>Research on Deep Learning based Breast Mass (Ultrasound) and Lung Mass (MRI) Segmentation</b>
+            </td>
+            <td width='10px'></td>
+            <td width='140px' valign="top" style="text-align:right;">2018.09-2022.04</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align:left; vertical-align: top;">
+                <ul>
+                    <li>Research on deep learning based semantic segmentation algorithms on breast ultrasound images as well as lung MRI images.</li>
+                    <li>Dig deep into semantic segmentation algorithms, such as fully supervised learning, semi-supervised learning, neural network architecture search, etc.</li>
+                    <li>Proposed lightweight dilated densely connected network for 3D breast tumor segmentation. The performance improved over 5% compared with classical segmentation networks, while network parameters were over 20 times smaller than classical networks.</li>
+                    <li>Designed an uncertainty-aware temporal-ensembling model for semi-supervised segmentation. The performance of semi-supervised method is able to achieve 94.4% of that in supervised segmentation with only 1.1% labeled data.</li>
+                    <li>Suggested an NAS-based 3D medical image segmentation framework, and achieved an improvement of 4.2% compared with the state-of-art human-designed segmentation network.</li>
+                    <li>Related journal and conference papers have been published, total impact factor 30+.</li>
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="text-align:left;">
+                <b>High Speed Train Gear Defect Detection Based on Computer Vision</b>
+            </td>
+            <td width='10px'></td>
+            <td width='140px' valign="top" style="text-align:right;">2018.09-2022.04</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align:left; vertical-align: top;">
+                <ul>
+                    <li>As a core developer, designed an automatic detection and quantitative analysis solution for surface pitting of coupling gear components in train sets, based on computer vision technology.</li>
+                    <li>Collected coupling gear surface images and applied image recognition algorithms to generate statistics, reports, and alerts for gears exceeding the defect threshold.</li>
+                    <li>Led the development of algorithms for detecting and segmenting gear surface wear areas, as well as the design and implementation of the software system on the Windows platform.</li>
+                    <li>Completed defect detection of 104 gear surfaces (internal and external) with defects larger than 1mm within 3 minutes; published related papers and patents.</li>
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="text-align:left;">
+                <b>Geometric Parameters Measurement of an Overhead Line System</b>
+            </td>
+            <td width='10px'></td>
+            <td width='140px' valign="top" style="text-align:right;">2018.09-2022.04</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align:left; vertical-align: top;">
+                <ul>
+                    <li>Provide solution for measuring the geometric parameters of an overhead line system using scale factors and frame differences.</li>
+                    <li>I was responsible for the previous algorithm simulation and participated in the hardware structure design work.</li>
+                    <li>Two related patents have been granted.</li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Publications -->
+    <h2>Publications</h2>
+    <table>
+        <tbody>
+        <!-- 2015 -->
+        <tr>
+            <td style="text-align:left">
+                G. Wang, <b>X. Cao</b>, S. An, F. Fan, C. Zhang, J. Wang, F. Yu, Z. Wang. Multi-Dimension-Embedding-Aware Modality Fusion Transformer for Psychiatric Disorder Classification, <i>ICIGP</i>, 2025.
+                [<a href="https://arxiv.org/abs/2310.02690" target="_blank">paper</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right"> 2022 </td> -->
+        </tr>
+
+        <!-- 2024 -->
+        <tr>
+            <td style="text-align:left">
+                <b>X. Cao</b>, G Wang, S Shi, J Zhao, Y Yao, J Fei, M Gao. JoyVASA: Portrait and Animal Image Animation with Diffusion-Based Audio-Driven Facial Dynamics and Head Motion Generation. <i>Arxiv</i>, 2024.
+                [<a href="https://arxiv.org/abs/2411.09209" target="_blank">paper</a>] [<a href="https://github.com/jdh-algo/JoyVASA" target="_blank">code</a>][<a href="https://jdh-algo.github.io/JoyVASA/" target="_blank">project</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right"> 2022 </td> -->
+        </tr>
+        <tr>
+            <td style="text-align:left">
+                S. Shi, <b>X. Cao</b>, J. Zhao, G. Wang. JoyHallo: Digital human model for Mandarin. <i>Arxiv</i>, 2024.
+                [<a href="https://arxiv.org/abs/2409.13268" target="_blank">technical report</a>] [<a href="https://github.com/jdh-algo/JoyHallo" target="_blank">code</a>][<a href="https://jdh-algo.github.io/JoyHallo/" target="_blank">project</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right"> 2022 </td> -->
+        </tr>
+        <tr>
+            <td style="text-align:left">
+                Z. Gao, Y. Guo, G. Wang, X. Chen, <b>X. Cao</b>, C. Zhang, S. An, F. Xu. Robust deep learning from incomplete annotation for accurate lung nodule detection. <i>Computers in Biology and Medicine</i>, 2024, 173:108361.
+                [<a href="https://www.sciencedirect.com/science/article/abs/pii/S00104825240044518" target="_blank">paper</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right"> 2022 </td> -->
+        </tr>
+
+        <!-- 2022 -->
+        <tr>
+            <td style="text-align:left">
+                <b>X. Cao</b>, H. Chen, Y. Li, Y. Peng, Y. Zhou, L. Cheng, <a href="http://cobweb.cs.uga.edu/~tliu/" target="_blank">T. Liu</a>, <a href="https://bme.shanghaitech.edu.cn/bme_en/2021/0205/c8252a85165/page.htm" target="_blank">D. Shen</a>. Auto-DenseUnet: Searchable Neural Network Architecture for Tumor Segmentation in 3D Automated Breast Ultrasound. <i>Medical Image Analysis</i>, 2022, 82: 102589.
+                [<a href="https://doi.org/10.1016/j.media.2022.102589" target="_blank">paper</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right"> 2022 </td> -->
+        </tr>
+        <tr>
+            <td style="text-align:left">
+                Y. Zhou, H. Chen, Y. Li, <b>X. Cao</b>, S. Wang, D. Shen. Cross-Model Attention-Guided Tumor Segmentation for 3D Automated Breast Ultrasound (ABUS) Images. <i>IEEE Journal of Biomedical and Health Informatics</i>, 2022, 26(1): 301-311.
+                [<a href="https://ieeexplore.ieee.org/document/9435079/" target="_blank">paper</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td>
+            <td width='100px' valign="top" style="text-align:right"> </td> -->
+        </tr>
+        <!-- 2021 -->
+        <tr>
+            <td style="text-align:left">
+                <b>X. Cao</b>, H. Chen, Y. Li, Y. Peng, S. Wang, L. Cheng. Uncertainty Aware Temporal-Ensembling Model for Semi-supervised ABUS Mass Segmentation. <i>IEEE Transactions on Medical Imaging</i>, 2021, 40(1):431-443.
+                [<a href="https://ieeexplore.ieee.org/document/9214845" target="_blank">paper</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right"> 2021</td> -->
+        </tr>
+        <tr>
+            <td style="text-align:left">
+                <b>X. Cao</b>, H. Chen, Y. Li, Y. Peng, S. Wang, L. Cheng. Dilated Densely Connected U-Net with Uncertainty Focus Loss for 3D ABUS Mass Segmentation. <i>Computer Methods and Programs in Biomedicine</i>, 2021, 209: 106313.
+                [<a href="https://doi.org/10.1016/j.cmpb.2021.106313" target="_blank">paper</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td>
+            <td width='100px' valign="top" style="text-align:right"> </td> -->
+        </tr>
+        <tr>
+            <td style="text-align:left">
+                J. Li, H. Chen, Y. Li, Y. Peng, N. Cai, <b>X. Cao</b>. AMRSegNet: Adaptive Modality Recalibration Network for Lung Tumor Segmentation on Multi-Modal MR Images. <i>Multimedia Tools and Applications</i>, 2021, 80: 33779–33797.
+                [<a href="https://doi.org/10.1007/s11042-021-11225-z" target="_blank">paper</a>]
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td>
+            <td width='100px' valign="top" style="text-align:right"> </td> -->
+        </tr>
+        <!-- 2020 -->
+        <tr>
+            <td style="text-align:left">
+                <b>X. Cao</b>, H. Chen, Y. Li, Y. Peng, Y. Zhou, L. Cheng. Boundary Loss with Non-Euclidean Distance Constraint for ABUS Mass Segmentation. <i>2020 CISP-BMEI</i>, Chengdu, China, 2020, pp: 645-650. 
+                <!-- <br> -->
+                [<a href="https://ieeexplore.ieee.org/document/9263676" target="_blank">paper</a>] 
+                <p></p>
+            </td>
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right"> 2020 </td> -->
+        </tr>
+        <!-- 2019 -->
+        <tr>
+            <td style="text-align:left">
+                Y. Peng, <b>X. Cao</b>, H. Chen, Y. Li, J. Li, X. Wang. Preliminary Study on Noise and Artifact Reduction in Phase-Contrast CT Image of Tristructural-Isotropic Coated Fuel Particle (in Chinese). <i>Acta Electronica Sinica</i>, 2019, 47(2): 448-453.
+                [<a href="http://www.ejournal.org.cn/CN/abstract/abstract11236.shtml" target="_blank">paper</a>]
+                <p></p>
+            </td>
+            <td width='10px'></td>
+            <!-- <td width='100px' valign="top" style="text-align:right">2019</td> -->
+        </tr>
+        <!-- 2018 -->
+        <tr>
+            <td style="text-align:left">
+                C. Wang, F. Li, Y. Li, H. Chen and <b>X. Cao</b>. A Defect Status Detecting Method for External Gear in Railway. 
+				<i>2018 IEEE 3rd International Conference on Image, Vision and Computing (ICIVC)</i>,  Chongqing, 2018, pp: 123-127.
+                [<a href="https://ieeexplore.ieee.org/document/8492899" target="_blank">paper</a>] 
+				<p></p>
+            </td>
+            <!-- [<a href="https://ieeexplore.ieee.org/document/8492899" target="_blank">paper</a>]  -->
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right"> 2018</td> -->
+        </tr>
 		<tr>
-			<td width='100px' valign="top" style="text-align:right">2018</td>
-			<td width='20px'></td>
-			<td>Y. Peng, W. Jiang, Z. Zhu, H. Yang, <b>X. Cao</b>, H. Chen. A method of Measuring the Geometric Parameters 
-				of an Overhead Line System by using Geometric Magnification and Monocular Vision. China, <i>CN201810182553.1</i>, 2018-11-13.
-				[<a href="http://www.wanfangdata.com.cn/details/detail.do?_type=patent&id=CN201810182553.1" target="_blank">Link</a>] 
+			<td style="text-align:left">
+				Y. Li, <b>X. Cao</b>, H. Chen, L. Zhang, N. Yang. Defect Status Detection Method Based on Machine Vision for External Gear in Train (in Chinese). 
+				<i>Journal of The China Railway Society</i>, 2018, 40(12):33-41.
+				<!-- <br> -->
+				[<a href="http://tdxb.bosihw.cn/Magazine/Show.aspx?Id=42136" target="_blank">paper</a>] 
 				<p></p>
 			</td>
+            <!-- <td width='10px'></td>
+            <td width='100px' valign="top" style="text-align:right"></td> -->
 		</tr>
 		<!-- 2017 -->
 		<tr>
-			<td width='100px' valign="top" style="text-align:right">2017</td>
-			<td width='20px'></td>
-			<td>Y. Peng, C. Zhang, B. Zheng, J. Yin, <b>X. Cao</b>, H. Chen. A method and a Device for Measuring the Geometric Parameters 
-				of an Overhead Line System by using Scale Factors and Frame Differences. China, <i>CN201710464403.5</i>, 2017-06-19.
-				[<a href="http://www.wanfangdata.com.cn/details/detail.do?_type=patent&id=CN201710464403.5#" target="_blank">Link</a>] 
+            <!-- <td style="text-align:left; width: 5px;">[1].</td> -->
+			<td style="text-align:left">
+				J. Wei, <b>X. Cao</b>, H. chen, Y. li. Research on benign and malignant masses classification in mammogram (in Chinese). 
+				<i>Journal of Beijing Jiaotong University</i>, 2017, 41(5): 73-.
+				<!-- <br> -->
+				[<a href="http://jdxb.bjtu.edu.cn/CN/abstract/abstract3224.shtml" target="_blank">paper</a>] 
 			</td>
+            <!-- <td width='10px'></td> -->
+            <!-- <td width='100px' valign="top" style="text-align:right">2017</td> -->
 		</tr>
-	</tbody>
-</table>
+        </tbody>
+    </table>
+    </div>
+</div>
 
-<!-- Publications -->
-<h2> Translated Book </h2>
-<table>
-	<tbody>
-		<!-- 2022 -->
-		<tr>
-			<td width='100px' valign="top" style="text-align:right">2022</td>
-			<td width='20px'></td>
-			<td>Y. Zhou, <b>X. Cao</b>. <i>Neural Networks with TensorFlow 2, Apress, 2020.</i> 
-				[<a href="https://item.jd.com/13127241.html" target="_blank">Link</a>] 
-				<p></p>
-			</td>
-		</tr>
-	</tbody>
-</table>
+    <!-- Patents -->
+    <h2>Patents&Translated Books</h2>
+    <table>
+        <tbody>
+            <!-- 2018 -->
+            <tr>
+                <td style="text-align:left">
+                    Y. Peng, W. Jiang, Z. Zhu, H. Yang, <b>X. Cao</b>, H. Chen. A method of Measuring the Geometric Parameters 
+                    of an Overhead Line System by using Geometric Magnification and Monocular Vision. China, <i>CN201810182553.1</i>, 2018-11-13.
+                    [<a href="http://www.wanfangdata.com.cn/details/detail.do?_type=patent&id=CN201810182553.1" target="_blank">Link</a>] 
+                    <p></p>
+                </td>
+                <!-- <td width='10px'></td>
+                <td width='100px' valign="top" style="text-align:right">2018</td> -->
+            </tr>
+            <!-- 2017 -->
+            <tr>
+                <td style="text-align:left">
+                    Y. Peng, C. Zhang, B. Zheng, J. Yin, <b>X. Cao</b>, H. Chen. A method and a Device for Measuring the Geometric Parameters 
+                    of an Overhead Line System by using Scale Factors and Frame Differences. China, <i>CN201710464403.5</i>, 2017-06-19.
+                    [<a href="http://www.wanfangdata.com.cn/details/detail.do?_type=patent&id=CN201710464403.5#" target="_blank">Link</a>] 
+                </td>
+                <!-- <td width='10px'></td>
+                <td width='100px' valign="top" style="text-align:right">2017</td> -->
+            </tr>
+            <tr>
+                <td>Y. Zhou, <b>X. Cao</b>. <i>Neural Networks with TensorFlow 2, Apress, 2020.</i> 
+                    &nbsp; [translated] [<a href="https://item.jd.com/13127241.html" target="_blank">Link</a>] 
+                    <p></p>
+                </td>
+                <!-- <td width='10px'></td>
+                <td width='100px' valign="top" style="text-align:right">2022</td> -->
+            </tr>
+        </tbody>
+    </table>
 
-<!-- Language -->
-<h2>Language Skills</h2>
-<table>
-	<tr>
-		<td width='100px' valign="top" style="text-align:right"> English</td>
-		<td width='20px'></td>
-		<td> IELTS (Band 7), CET-6</td>
-	</tr>
-	<tr>
-		<td width='100px' valign="top" style="text-align:right"> Chinese</td>
-		<td width='20px'></td>
-		<td> Mother Tongue</td>
-	</tr>
-</table>
+    <!-- Language -->
+    <h2>Personal Qualifications</h2>
+    <table>
+        <tr>
+            <td width='150px' valign="top" style="text-align:right"> Research Interests:</td>
+            <td width='5px'></td>
+            <td style="text-align: left;"> AIGC, Multimodal, Image Processing, Pattern Recognition, Computer Vision, Artificial Intelligence </td>
+        </tr>
+        <tr>
+            <td width='50px' valign="top" style="text-align:right"> Language Skills: </td>
+            <td width='5px'></td>
+            <td> Chinese (Monther Tongue) &nbsp;|&nbsp; English (Proficient in Listening, Speaking, Reading, Writing), IELTS Score: 7 </td>
+        </tr>
+        <tr>
+            <td width='50px' valign="top" style="text-align:right"> Computer Skills: </td>
+            <td width='5px'></td>
+            <td> Programming Languages: Python, C++ &nbsp;|&nbsp; Computer Vision: Pytorch, OpenCV &nbsp; | &nbsp; Others: Linux, Vim, LaTex </td>
+        </tr>
+        <tr>
+            <td width='50px' valign="top" style="text-align:right"> Hobbies: </td>
+            <td width='5px'></td>
+            <td>  Personal blog with over 330,000 views, CSDN Blog Expert &nbsp;|&nbsp; Enjoys reading, running, and traveling </td>
+        </tr>
+    </table>
+    </div>
+</div>
 
 
-<!-- Computer Skills -->
-<h2>Computer Skills</h2>
-<table>
-	<tbody>
-		<tr>
-			<td width="100px" valign="top" style="text-align:right">Advanced</td>
-			<td width='20px'></td>
-			<td>Python, Pytorch, Vim</td>
-		</tr>
-		<tr>
-			<td width="100px" valign="top" style="text-align:right">Intermediate</td>
-			<td width='20px'></td>
-			<td>Linux, C++, OpenCV, LaTex</td>
-		</tr>
-	</tbody>
-</table>
 
+<script>
+    function switchLanguage(lang) {
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => tab.classList.remove('active'));
+        document.querySelector(`.tab[onclick*='${lang}']`).classList.add('active');
 
-<!-- Research Interest -->
-<!-- <h2>Research Interests</h2>
-<table>
-	<tbody>
-		<tr>			
-			<td width="100px" valign="top" style="text-align:right"></td>
-			<td width='20px'></td>
-			<td><li>Image Processing</li></td>
-			<td width="20%"></td>
-			<td><li>Machine Learning</li></td>
-		</tr>
-		<tr>
-			<td width="100px" valign="top" style="text-align:right"></td>
-			<td width='20px'></td>
-			<td><li>Computer Vision</li></td>
-			<td width="20%"></td>
-			<td><li>Artificial Intelligence</li></td>
-		</tr>
-	</tbody>
-</table> -->
+        const contents = document.querySelectorAll('.content');
+        contents.forEach(content => content.classList.remove('show'));
+        document.getElementById(lang).classList.add('show');
+    }
+
+    // Initialize with default language (Chinese)
+    switchLanguage('en');
+</script>
 
 
 <!-- Foot -->
@@ -371,9 +873,8 @@
 		</div>
 
 		<br>
-        &copy; Xuyang Cao | Last updated: 19 Sept. 2022
+        &copy; Xuyang Cao | Last updated: Jan. 2025
     </center></p>
 </div>
-
 </body>
 </html>
