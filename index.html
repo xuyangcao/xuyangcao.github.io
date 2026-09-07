@@ -51,7 +51,7 @@
                 </p>
             </td>
             <td>
-                <img src="./images/xuyangcao.png" border="1" width="350"><br>
+                <img src="./images/xuyangcao5.jpg" border="1" width="350"><br>
             </td>
         </tr>
         </tbody>
@@ -60,7 +60,7 @@
     <!-- Biography -->
     <h2>Biography</h2>
     <p>
-        Dr. Xuyang Cao is a senior algorithm engineer at JD Health Inc. in JD.com, specializing in MLLM related research and application. Over the past year, his primary focus has been on multimodal deep learning algorithms, including medical MLLMs, audio-driven talking face generation, brain science related research, etc.
+        Dr. Xuyang Cao is a senior algorithm engineer at JD Health Inc. in JD.com, specializing in multimodal large language models and their clinical applications. His current work focuses on agentic 3D medical image understanding and unified medical multimodal model training, with an emphasis on radiology-style reasoning, multimodal grounding, and deployable medical AI systems.
     </p>
     <p>
         Since 2016, he has been engaged in research in computer vision, image processing, and pattern recognition. He completed his undergraduate, and Ph.D. degrees at <a href="http://en.bjtu.edu.cn" target="_blank">Beijing Jiaotong University</a>. 
@@ -97,60 +97,81 @@
     <!-- Projects -->
     <h2>Projects</h2>
 
-    <table style="width:100%; table-layout:fixed;">
-        <tbody>
-        <tr>
-            <td style="text-align:left;">
-                <b>Unified Medical Multimodal Foundation Model</b>
-            </td>
-            <td width='10px'></td>
-            <td width='140px' valign="top" style="text-align:right;">2025.06-Present</td>
-        </tr>
-        <tr>
-            <td colspan="3" style="text-align:left; vertical-align: top;">
-                <ul>
-                    <li>Built the open-source medical MLLM framework, <a href="https://github.com/jdh-algo/Citrus-V" target="_blank" rel="noopener noreferrer">CitrusV</a>, a unified medical multimodal model that achieves state-of-the-art performance at the time, serving as the foundational model for downstream medical applications.</li>
-                    <li><a href="https://github.com/jdh-algo/Citrus-V" target="_blank" rel="noopener noreferrer">CitrusV</a> is the first model in the industry to support both medical image understanding and detection/segmentation, enabling unified parsing of textual, imaging, laboratory, and other multimodal medical data.</li>
-                    <li>For the first time, addressed a longstanding question by demonstrating that a unified MLLM can surpass expert segmentation models, improving average performance by 112%.</li>
-                    <li>Introduced chain-of-thought (CoT) reasoning aligned with clinical diagnostic workflows, delivering multimodal reasoning that is explainable, verifiable, and localizable for medical decision support. </li>
-                    <li>Achieved state-of-the-art performance across 7 core task categories and 21 benchmark datasets. Core achievements released at the annual JDD 2025 (<a href="https://www.qbitai.com/2025/09/336087.html" target="_blank" rel="noopener noreferrer">link</a>), forming open-source assets (<a href="https://github.com/jdh-algo/Citrus-V" target="_blank" rel="noopener noreferrer">Code</a>, <a href="https://arxiv.org/abs/2509.19090" target="_blank" rel="noopener noreferrer">Technical Report</a>).</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align:left;">
-                <b>Audio Driven Talking Face Generation</b>
-            </td>
-            <td width='10px'></td>
-            <td width='140px' valign="top" style="text-align:right;">2024.01-2025.06</td>
-        </tr>
-        <tr>
-            <td colspan="3" style="text-align:left; vertical-align: top;">
-                <ul>
-                    <li>Developed an audio-driven talking face generation framework, to support offline and online medical applications (DAU over 100k), including medical education, medical consultation, etc.</li>       
-                    <li>Proposed <a href="https://github.com/jdh-algo/JoyVASA" target="_blank" rel="noopener noreferrer">JoyVASA</a>, a diffusion-based talking face generation model, which separates dynamic expressions from static 3D identity cues in facial representation, trained a diffusion transformer to generate identity-independent motion sequences directly from audio, and used a dedicated renderer to synthesize high-quality animations.</li>
-                    <li><a href="https://github.com/jdh-algo/JoyVASA" target="_blank" rel="noopener noreferrer">JoyVASA</a> achieves real-time performance, with a RTF of 0.76 and a speed of 40x faster than existing diffusion based models.</li>
-                    <li>The open source projects [<a href="https://github.com/jdh-algo/JoyVASA" target="_blank" rel="noopener noreferrer">JoyVASA</a> and <a href="https://github.com/jdh-algo/JoyHallo" target="_blank" rel="noopener noreferrer">JoyHallo</a>] achieved 1,300+ GitHub stars.</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align:left;">
-                <b>The Brain Science Project - Brain-Computer Interface (BCI) - Brain Disease Diagnosis Based on Medical Imaging</b>
-            </td>
-            <td width='10px'></td>
-            <td width='140px' valign="top" style="text-align:right;">2023.02-2024.01</td>
-        </tr>
-        <tr>
-            <td colspan="3" style="text-align:left; vertical-align: top;">
-                <ul>
-                    <li>Served as a key researcher in JD Health Research, focusing on brain science related research, including Brain-Computer Interface (BCI), and the early diagnosis of Alzheimer’s (AD) and Bipolar Disorder (BD) based on medical imaging.</li>
-                    <li>Research interests include: explainable AI, medical multimodal fusion model, BCI based intelligent rehabilitation, etc.</li>
-                    <li>Several papers and patents are published, including multiple studies in brain imaging and EEG recognition achieving state-of-the-art results.</li>
-                    <li>A national key research and development program of China is approved. (project: Virtual Reality Cognitive Rehabilitation Training System for the Elderly).</li>
-                </ul>
-            </td>
-        </tr>
+	    <table style="width:100%; table-layout:fixed;">
+	        <tbody>
+	        <tr>
+	            <td style="text-align:left;">
+	                <b>Agentic Strategy for 3D Medical Image Multimodal Understanding</b>
+	            </td>
+	            <td width='10px'></td>
+	            <td width='140px' valign="top" style="text-align:right;">2026.04-Present</td>
+	        </tr>
+	        <tr>
+	            <td colspan="3" style="text-align:left; vertical-align: top;">
+	                <ul>
+	                    <li>Led the design of a ReAct-style agentic understanding system for medical visual question answering and radiology report generation, addressing the difficulty of directly processing 3D medical images with general-purpose MLLMs.</li>
+	                    <li>Simulated radiologists' reading workflow by building a coarse-to-fine reasoning mechanism covering continuous slice browsing, global screening, local close reading, and evidence integration.</li>
+	                    <li>Designed an agentic workflow that coordinates general MLLMs, medical expert models, and image-processing tools through multi-series reconnaissance, key-series selection, tool invocation, evidence aggregation, and structured output.</li>
+	                    <li>Enabled key lesion localization and cross-slice evidence acquisition for complex 3D medical image understanding scenarios.</li>
+	                    <li>On real-world medical benchmarks, the 27B agentic system outperformed GPT-5.5/5.6 bare-model baselines, improving report generation and medical VQA by +0.47pp and +6.15pp, respectively; related capabilities were deployed on the 2B MedWork platform and released at JD Discovery 2026.</li>
+	                </ul>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td style="text-align:left;">
+	                <b>Unified Medical Multimodal Foundation Model Training</b>
+	            </td>
+	            <td width='10px'></td>
+	            <td width='140px' valign="top" style="text-align:right;">2025.07-2026.04</td>
+	        </tr>
+	        <tr>
+	            <td colspan="3" style="text-align:left; vertical-align: top;">
+	                <ul>
+	                    <li>Designed and trained an industry-leading medical omni-modal architecture across 7B/32B/72B scales, unifying medical image understanding, detection, segmentation, text, imaging, laboratory tests, and other clinical modalities.</li>
+	                    <li>Led model architecture design and partial model merging/training, focusing on semantic- and pixel-level multimodal understanding, Think with Grounding, and native 3D medical image understanding.</li>
+	                    <li>Demonstrated that unified multimodal models can surpass expert segmentation models for the first time, improving average performance by 112%.</li>
+	                    <li>Aligned chain-of-thought (CoT) reasoning with clinical diagnostic pathways, enabling localizable and verifiable multimodal reasoning.</li>
+	                    <li>Extended the framework to directly understand 3D medical images, proposed a visual token compression strategy, and introduced organ-level Think with Grounding, outperforming existing models on multiple benchmarks.</li>
+	                    <li>Achieved leading results across 7 task categories and 21 standard benchmarks, improving over SOTA models by +20.02pp in OCR, +8.71 in report generation, +7.44pp in 2D understanding, +8.09pp in 3D image understanding, +0.82pp in text QA, +23.70pp in detection, and +8.44pp in segmentation.</li>
+	                    <li>Accumulated million-scale medical multimodal data assets and released group-level open-source assets (<a href="https://github.com/jdh-algo/Citrus-V" target="_blank" rel="noopener noreferrer">Code</a>, <a href="https://arxiv.org/abs/2509.19090" target="_blank" rel="noopener noreferrer">Technical Report</a>); Jingyi Qianxun 2.0 was released at JD Discovery 2025 (<a href="https://www.qbitai.com/2025/09/336087.html" target="_blank" rel="noopener noreferrer">link</a>).</li>
+	                </ul>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td style="text-align:left;">
+	                <b>Digital Human Generation Based on Diffusion and Disentangled Facial Representation</b>
+	            </td>
+	            <td width='10px'></td>
+	            <td width='140px' valign="top" style="text-align:right;">2024.01-2025.05</td>
+	        </tr>
+	        <tr>
+	            <td colspan="3" style="text-align:left; vertical-align: top;">
+	                <ul>
+	                    <li>Built JD Health's digital human generation technology from 0 to 1, including a GAN-based dual-tower model and a diffusion-based end-to-end generation model.</li>
+	                    <li>Proposed a real-time diffusion-based digital human generation method that disentangles dynamic facial expressions from static 3D identity information, trains a diffusion Transformer to generate identity-agnostic motion sequences from audio, and uses a dedicated renderer for high-quality animation synthesis.</li>
+	                    <li>Developed one of the industry's early models capable of audio-driven animation for both human portraits and animals, achieving an RTF of 0.76 and more than 40x faster inference than most existing diffusion models under the same hardware conditions.</li>
+	                    <li>Accumulated TB-scale video data assets, produced two types of digital human generation models and technical reports, and released open-source projects <a href="https://github.com/jdh-algo/JoyVASA" target="_blank" rel="noopener noreferrer">JoyVASA</a> and <a href="https://github.com/jdh-algo/JoyHallo" target="_blank" rel="noopener noreferrer">JoyHallo</a>, which together received 1,300+ GitHub stars.</li>
+	                    <li>Enabled online medical consultation, medical knowledge popularization, and representative products such as Dr. Dawei; related technologies were released at JD Discovery 2024.</li>
+	                </ul>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td style="text-align:left;">
+	                <b>Vision Technology for Medical Scenarios</b>
+	            </td>
+	            <td width='10px'></td>
+	            <td width='140px' valign="top" style="text-align:right;">2022.11-2024.01</td>
+	        </tr>
+	        <tr>
+	            <td colspan="3" style="text-align:left; vertical-align: top;">
+	                <ul>
+	                    <li>Served as a core researcher at JD Health Exploration Research Institute, exploring classical computer vision technologies in medical imaging and online consultation scenarios, including early diagnosis of Alzheimer's Disease (AD) and Bipolar Disorder (BD) based on medical imaging.</li>
+	                    <li>Focused on explainable AI, multimodal fusion models, semantic segmentation, classification, and semi-supervised learning for medical applications.</li>
+	                    <li>Published 5 papers and multiple patents, with several brain imaging studies achieving leading results; skin disease diagnosis technology was deployed in online consultation scenarios.</li>
+	                    <li>Participated in a National Key R&amp;D Program project with a 15-million RMB budget: Virtual Reality Cognitive Rehabilitation Training System for the Elderly.</li>
+	                </ul>
+	            </td>
+	        </tr>
         <tr>
             <td style="text-align:left;">
                 <b>Research on Deep Learning based Breast Mass (Ultrasound) and Lung Mass (MRI) Segmentation</b>
@@ -461,7 +482,7 @@
 		</div>
 
 		<br>
-        &copy; Xuyang Cao | Last updated: Mar. 2026
+        &copy; Xuyang Cao | Last updated: Sep. 2026
     </center></p>
 </div>
 </body>
